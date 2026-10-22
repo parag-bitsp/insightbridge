@@ -16,10 +16,10 @@ async function traceHome(epoch,runId){
  const content=el('div',{'aria-live':'polite'},p('Loading saved runs...','loading'));
  $('main').replaceChildren(el('section',{class:'reference-page trace-page'},
   el('a',{href:'#home',class:'back-link'},'Back to home'),el('h1',{},'Run trace & cost'),
-  p('Compare the saved GPT-5.4 and GPT-6 Astra runs.'),content));
- const saved=await Promise.all(['latency','astra'].map(mode=>cachedDemo(mode)));
+  p('Compare the saved GPT-6 Astra and GPT-5.4 runs.'),content));
+ const saved=await Promise.all(['astra','latency'].map(mode=>cachedDemo(mode)));
  if(epoch!==state.epoch)return;
- const selectedId=saved.find(d=>d.cache_mode===runId||d.trace_runs.includes(runId))?.cache_mode||(['latency','astra'].includes(state.analysisMode)?state.analysisMode:'latency');
+ const selectedId=saved.find(d=>d.cache_mode===runId||d.trace_runs.includes(runId))?.cache_mode||(['astra','latency'].includes(state.analysisMode)?state.analysisMode:'astra');
  const frozen=saved.find(d=>d.cache_mode===selectedId);
  const batches=await Promise.all(frozen.trace_runs.map(id=>api(`/api/traces/${encodeURIComponent(id)}`)));
  if(epoch!==state.epoch)return;

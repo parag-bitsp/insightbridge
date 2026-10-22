@@ -90,8 +90,8 @@ function workspaceView(withInbox=false){
  $('sidebar').hidden=!withInbox;
  $('library').hidden=!withInbox;
 }
-const ANALYSIS_MODE_KEY='insightbridge-cached-analysis-mode-v1';
-function cachedAnalysisMode(){try{return ['cost','astra'].includes(localStorage.getItem('insightbridge-cached-analysis-mode-v1'))?'astra':'latency';}catch{return 'latency';}}
+const ANALYSIS_MODE_KEY='insightbridge-cached-analysis-mode-v2';
+function cachedAnalysisMode(){try{return localStorage.getItem('insightbridge-cached-analysis-mode-v2')==='latency'?'latency':'astra';}catch{return 'astra';}}
 async function cachedDemo(mode=state.analysisMode){
  if(!state.cachedDemos[mode])state.cachedDemos[mode]=await api('/api/inbox',{analysis_mode:mode});
  return state.cachedDemos[mode];
@@ -198,10 +198,10 @@ function policyControls(){
   }catch(error){if(epoch===state.epoch)status.textContent=`Could not load cached analysis. ${error.message}`;}
   finally{astra.disabled=false;full.disabled=false;}
  }
- full=button('GPT-5.4',()=>load('latency'),'primary');
- astra=button('GPT-6 Astra',()=>load('astra'));
+ full=button('GPT-5.4',()=>load('latency'));
+ astra=button('GPT-6 Astra',()=>load('astra'),'primary');
  return el('section',{class:'policy-settings saved-analysis-card','aria-labelledby':'policy-heading'},
-  el('div',{class:'saved-analysis-controls'},el('div',{class:'saved-model-buttons'},full,astra),
+  el('div',{class:'saved-analysis-controls'},el('div',{class:'saved-model-buttons'},astra,full),
    el('p',{id:'policy-heading',class:'small muted saved-results-caption'},'Compare results saved from the last run'),
    el('div',{class:'saved-analysis-links'},viewRubric,el('a',{href:'#view=evidence'},'Customer issues')),status));
 }

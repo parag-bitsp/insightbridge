@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/style.css">
   <script src="/run-trace.js" defer></script>
   <script src="/feedback.js" defer></script>
+  <script src="/demo-script.js" defer></script>
   <script src="/app.js" defer></script>
 </head>
 <body>
@@ -37,6 +38,10 @@
   <dialog id="ticket-dialog" class="ticket-dialog" aria-labelledby="ticket-dialog-title">
     <div class="dialog-head"><h2 id="ticket-dialog-title">Ticket details</h2><button id="close-ticket" type="button" aria-label="Close ticket" autofocus>Close</button></div>
     <div id="ticket-dialog-content" class="ticket-dialog-content" tabindex="0" aria-label="Ticket details and acceptance criteria"></div>
+  </dialog>
+  <dialog id="demo-script-dialog" class="rubric-dialog demo-script-dialog" aria-labelledby="demo-script-title">
+    <div class="dialog-head"><h2 id="demo-script-title">Presenter demo script</h2><button id="close-demo-script" type="button" aria-label="Close demo script" autofocus>Close</button></div>
+    <div id="demo-script-content" class="rubric-content" tabindex="0" aria-label="Presenter script document"></div>
   </dialog>
 </body>
 </html>

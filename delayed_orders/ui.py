@@ -294,14 +294,17 @@ def make_server(port=8765,policy_reader=None,review_service=None,feedback_store=
                           '/app.js':('app.js','text/javascript; charset=utf-8'),
                           '/run-trace.js':('run-trace.js','text/javascript; charset=utf-8'),
                           '/feedback.js':('feedback.js','text/javascript; charset=utf-8'),
+                          '/demo-script.js':('demo-script.js','text/javascript; charset=utf-8'),
                           '/style.css':('style.css','text/css; charset=utf-8')}
                 if path in assets and not query:
                     name,mime = assets[path]
                     return self.send_data(200,_read(ASSET_ROOT,ROOT/'delayed_orders/web',name),mime)
                 if path=='/favicon.ico' and not query: return self.send_data(204,b'')
+                if path=='/api/demo-script' and not query:
+                    return self.send_data(200,{'text':_read(ROOT/'docs',ROOT/'docs','demo-script.md').decode('utf-8')})
                 if path=='/api/cases' and not query: return self.send_data(200,store.inbox())
                 if path=='/api/inbox' and set(query)<={'analysis_mode'}:
-                    return self.send_data(200,store.lead_inbox() if allow_live_analysis else frozen.inbox(query.get('analysis_mode','latency')))
+                    return self.send_data(200,store.lead_inbox() if allow_live_analysis else frozen.inbox(query.get('analysis_mode','astra')))
                 if path=='/api/traces' and not query:
                     history=traces.history()
                     if selected_runs is not None and not allow_live_analysis:
