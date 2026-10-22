@@ -39,11 +39,12 @@ async function traceHome(epoch,runId){
   call.validation_error?p(call.validation_error,'notice neutral'):null,
   details('Request supplied to the model',json(call.request)),details('Response from the model',json(call.response))));
  const row=(label,summary,...children)=>el('tr',{},el('th',{scope:'row'},label),el('td',{},summary,...children));
+ const readingLabel=trace.interpretation.some(call=>call.phase==='framework_reading')?'Framework reading':'Rubric interpretation';
  const allCalls=[...trace.interpretation,...trace.cases.flatMap(item=>item.calls)];
  const correctionCount=allCalls.filter(call=>call.phase==='validation_correction').length;
  const table=el('table',{class:'trace-table'},el('caption',{class:'small muted'},'Saved run overview'),
   el('thead',{},el('tr',{},el('th',{scope:'col'},'Detail'),el('th',{scope:'col'},'What happened'))),el('tbody',{},
-   row('Investigation flow',p(trace.kind==='Rubric interpretation'?'Rubric interpretation failed before case investigations started.':`Rubric interpretation → case investigations → validation → results. Status: ${trace.status}.`),
+   row('Investigation flow',p(trace.kind==='Rubric interpretation'?'Rubric interpretation failed before case investigations started.':`${readingLabel} → case investigations → validation → results. Status: ${trace.status}.`),
     trace.status==='running'?p(`${trace.completed_cases||0} of ${trace.total_cases||trace.cases.length} cases completed. Refresh to see saved progress; call records appear when each case finishes.`,'small muted'):null,
     details('View stages and validation',p(trace.published?'All case results passed validation and were published.':trace.kind==='Archived investigation'?'Archived investigation; publication under the current rubric is not established.':'Results from this run have not been published.'),
      p('Validation checks structure, figures and citations. Explanation quality still requires human review.','small muted'),
@@ -56,7 +57,7 @@ async function traceHome(epoch,runId){
      p(item.rubric_sha256?`Rubric SHA-256: ${item.rubric_sha256}`:'Rubric provenance not recorded for this case.','small muted'),
      details('View supplied context',...item.calls.map((call,index)=>details(`Call ${index+1} context`,json(call.request.input||[])))))))),
    row('Model calls',p(`${trace.totals.calls} recorded calls; ${correctionCount} validation correction${correctionCount===1?'':'s'}. No automatic transport retries.`),
-    details('View calls, requests and responses',...callNodes(trace.interpretation,'Rubric interpretation'),
+    details('View calls, requests and responses',...callNodes(trace.interpretation,readingLabel),
      ...trace.cases.flatMap(item=>callNodes(item.calls,item.case_id)),
      !trace.interpretation_recorded?p('Rubric interpretation trace not recorded for this older run.','small muted'):null,
      p('Call duration measures the generation request. Case duration also includes preparation, token counting and validation.','small muted'))),
@@ -90,7 +91,7 @@ async function traceHome(epoch,runId){
   $('trace-cost-summary').replaceChildren(p(estimate.known?`${money(estimate.total)} USD${partial?' for recorded usage (partial estimate)':''}.`:'Cost unavailable: no priced usage recorded.'),
    p('Estimated token cost, not a billing statement. Budget reservations are shown separately.','small muted'));
   const costLine=(label,calls)=>{const item=cost(calls,prices);return p(`${label}: ${item.known?money(item.total)+' USD'+(item.known<calls.length?' (partial)':''):'Not available'}`);};
-  $('trace-cost-details').replaceChildren(details('View cost by call and case',costLine('Rubric interpretation',trace.interpretation),
+  $('trace-cost-details').replaceChildren(details('View cost by call and case',costLine(readingLabel,trace.interpretation),
    trace.interpretation_reserved_micro_usd?p(`Unsettled rubric budget reservation: ${money(trace.interpretation_reserved_micro_usd/1e6)} USD. This is not confirmed spend.`,'notice neutral'):null,
    ...trace.cases.map(item=>el('section',{},el('h3',{},heading(item)),costLine('Case estimate',item.calls),
     ...item.calls.map((call,index)=>costLine(`Call ${index+1}`,[call])),

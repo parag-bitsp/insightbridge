@@ -304,7 +304,9 @@ def make_server(port=8765,policy_reader=None,review_service=None,feedback_store=
                     return self.send_data(200,store.lead_inbox() if allow_live_analysis else frozen.inbox(query.get('analysis_mode','latency')))
                 if path=='/api/traces' and not query:
                     history=traces.history()
-                    if selected_runs is not None and not allow_live_analysis:history['runs']=[row for row in history['runs'] if row['run_id'] in selected_runs]
+                    if selected_runs is not None and not allow_live_analysis:
+                        history['runs']=[row for row in history['runs'] if row['run_id'] in selected_runs]
+                        history.pop('pricing',None)
                     return self.send_data(200,history)
                 trace_match=re.fullmatch(r'/api/traces/([a-f0-9]{32}|\d{8}T\d{6}Z-[a-f0-9]{8})',path)
                 if trace_match and not query:
