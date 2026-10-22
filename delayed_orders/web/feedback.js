@@ -19,7 +19,7 @@ function initFeedback(){
   const target=event.target.closest('a,button');if(!target)return;
   const label=target.textContent.trim();
   const sources={'GPT-5.4':'run_54','GPT-6 Astra':'run_astra','Leave feedback':'header','Customer issues':'customer_issues','View AI framework':'framework','View saved traces':'run_trace','View tickets':'jira'};
-  const source=sources[label];
+  const source=sources[label]||{'#view=trace':'run_trace','#view=jira':'jira','#view=issues':'saved_analysis','#home':'home'}[target.getAttribute('href')];
   if(source)feedbackPost('/api/feedback/events',{...feedbackState.identity,event_id:feedbackId(),event:'click',source}).catch(()=>{});
  });
 }
