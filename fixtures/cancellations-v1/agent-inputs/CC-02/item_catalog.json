@@ -1,0 +1,30 @@
+[
+  {
+    "product_id": "ATTA-5KG",
+    "product_name": "Atta",
+    "pack_size": "5 kg bag",
+    "unit_price_paise": 24500,
+    "currency": "INR"
+  },
+  {
+    "product_id": "RICE-1KG",
+    "product_name": "Rice",
+    "pack_size": "1 kg bag",
+    "unit_price_paise": 11000,
+    "currency": "INR"
+  },
+  {
+    "product_id": "DAL-500",
+    "product_name": "Toor dal",
+    "pack_size": "500 g pack",
+    "unit_price_paise": 8500,
+    "currency": "INR"
+  },
+  {
+    "product_id": "OIL-1L",
+    "product_name": "Cooking oil",
+    "pack_size": "1 litre bottle",
+    "unit_price_paise": 16500,
+    "currency": "INR"
+  }
+]

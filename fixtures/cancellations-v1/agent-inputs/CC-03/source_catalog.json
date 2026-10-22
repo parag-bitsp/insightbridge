@@ -1,0 +1,73 @@
+{
+  "case_id": "CC-03",
+  "access": "read_only",
+  "provenance": "synthetic",
+  "sources": {
+    "orders": {
+      "path": "orders.jsonl",
+      "status": "available",
+      "coverage": "All authored records of this type within this case.",
+      "note": null
+    },
+    "order_lines": {
+      "path": "order_lines.jsonl",
+      "status": "available",
+      "coverage": "All authored records of this type within this case.",
+      "note": null
+    },
+    "payments": {
+      "path": "payments.jsonl",
+      "status": "available",
+      "coverage": "All authored records of this type within this case.",
+      "note": null
+    },
+    "feedback": {
+      "path": "feedback.jsonl",
+      "status": "available",
+      "coverage": "All authored records of this type within this case.",
+      "note": null
+    },
+    "inventory_events": {
+      "path": "inventory_events.jsonl",
+      "status": "available",
+      "coverage": "Focus product only within this case.",
+      "note": null
+    },
+    "availability_checks": {
+      "path": "availability_checks.jsonl",
+      "status": "available",
+      "coverage": "Focus product only within this case.",
+      "note": null
+    },
+    "availability_updates": {
+      "path": "availability_updates.jsonl",
+      "status": "available",
+      "coverage": "Focus product only within this case.",
+      "note": null
+    },
+    "pick_events": {
+      "path": "pick_events.jsonl",
+      "status": "available",
+      "coverage": "Focus product only within this case.",
+      "note": null
+    },
+    "cancellation_events": {
+      "path": "cancellation_events.jsonl",
+      "status": "available",
+      "coverage": "All authored records of this type within this case.",
+      "note": null
+    },
+    "stock_counts": {
+      "path": "stock_counts.jsonl",
+      "status": "not_collected",
+      "coverage": "Focus product only within this case.",
+      "note": "No records were collected; this is not an observed zero."
+    },
+    "quality_inspections": {
+      "path": "quality_inspections.jsonl",
+      "status": "available",
+      "coverage": "Focus product only within this case.",
+      "note": null
+    }
+  }
+}

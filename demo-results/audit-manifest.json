@@ -1,0 +1,61 @@
+{
+  "runs": [
+    {
+      "label": "GPT-5.4",
+      "run_id": "bd2a5dd1907040c8af2558031e7e390c",
+      "model": "gpt-5.4-2026-03-05",
+      "tokens": {
+        "calls": 8,
+        "input_tokens": 78001,
+        "cached_input_tokens": 26880,
+        "output_tokens": 10479,
+        "total_tokens": 88480,
+        "missing_usage_calls": 0,
+        "unknown_cache_calls": 0,
+        "unpriced_calls": 0,
+        "estimated_cost_usd": 0.2917075
+      },
+      "accounted_micro_usd": 352188,
+      "files": {
+        "status.json": "d16c48bc2623b044afa686941a4760b6498d6cedfdbafb572cb29a4a5d7bcfe3",
+        "GG-01.json": "f8f41050a6f15d60831f2916202be2db0d7c3eaa1884c6ebbff4c950aaa65bf7",
+        "GG-02.json": "89f12236cf48e052e046b85f31e9855a95edcf062f88be368c9b3c65e2e84373",
+        "GG-03.json": "5f110bbc1036e08fab0a1c2c0d7170b3662b8e3373b1c921d82178b45a1647ef",
+        "GG-04.json": "6c9fbb3cc9d574255031d0354d8b9f02571e2280c25121c63c7aa3b39f1eb534",
+        "CC-01.json": "6236ccbee3a9cad218850a63cd9a668ad50c59ef82311b0869cce86d41a3024c",
+        "CC-02.json": "1ceb06c2de892ae54b3ca37ab3130ac86bd2c034e1f4e21f04c4708dc0c3bd96",
+        "CC-03.json": "b1252a25ad4742f628c83554aed390ccb204028a23db5b255f95a80d466194f3",
+        "framework.json": "ee4cf9a8177c5212d869ce72c33f8eac9da1ede7d93e73bd7d4c3079a9418818"
+      },
+      "display_edits_separate_from_original_logs": true
+    },
+    {
+      "label": "GPT-6 Astra",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "tokens": {
+        "calls": 7,
+        "input_tokens": 68375,
+        "cached_input_tokens": 0,
+        "output_tokens": 12074,
+        "total_tokens": 80449,
+        "missing_usage_calls": 0,
+        "unknown_cache_calls": 0,
+        "unpriced_calls": 0,
+        "estimated_cost_usd": 1.28745
+      },
+      "accounted_micro_usd": 1458388,
+      "files": {
+        "status.json": "4459798259875f3678ed8112498decaa783184337924d6ba732de9c3679fdddc",
+        "GG-01.json": "5a795100d9e4825832906e88e94ceb3d8d33339d2c8ac9bc445969d5445ce7ae",
+        "GG-02.json": "dbb296bbcb645837676742f295e864f25be95b79aadd44de0af56fed492f40e3",
+        "GG-03.json": "b14e410fcb0dac4a08bd5dc32e6c63b9ce909773dd815f39c9323d5607ca4578",
+        "GG-04.json": "270c28fe46ccdca8d63f5ac3056769a9ad3a146473ef90a08fe9593e63f3c88f",
+        "CC-01.json": "8c003303b52dcfaca8b9928fc0d5032614f21b246cb8c41e1355006fa4720499",
+        "CC-02.json": "dccca448dbb6ae43108e8a50f51e6c3d97170b2c4771ea41755a4829c831a2b1",
+        "CC-03.json": "0a1b2a26720144f30aff1d2a6d3035655ffcd2d91ff4b98ce05d6cbf0ab91365"
+      },
+      "display_edits_separate_from_original_logs": true
+    }
+  ]
+}

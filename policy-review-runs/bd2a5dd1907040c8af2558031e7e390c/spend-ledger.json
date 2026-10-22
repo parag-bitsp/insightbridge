@@ -1,0 +1,38 @@
+{
+  "campaign": "development-v1",
+  "cap_micro_usd": 2000000,
+  "entries": {
+    "36d85bfcbd5b4c70843b19b818647655": {
+      "status": "settled",
+      "accounted_micro_usd": 9700
+    },
+    "ff74ba20c6ed4810a703c729b917d791": {
+      "status": "settled",
+      "accounted_micro_usd": 44600
+    },
+    "effae2fd8bef4755b343544e853754ee": {
+      "status": "settled",
+      "accounted_micro_usd": 41960
+    },
+    "59a24c1c885e4ae49ed1a17a0b0cb809": {
+      "status": "settled",
+      "accounted_micro_usd": 27765
+    },
+    "2f5bfb8bfe5c468299a7a1fff85b699a": {
+      "status": "settled",
+      "accounted_micro_usd": 26385
+    },
+    "4e1c9e171a9d431b8fed96c938bfaa28": {
+      "status": "settled",
+      "accounted_micro_usd": 70685
+    },
+    "24521ad6465144bd944c348f606c5668": {
+      "status": "settled",
+      "accounted_micro_usd": 69430
+    },
+    "ab0592ad704443f596b068f8e4e3c13d": {
+      "status": "settled",
+      "accounted_micro_usd": 61663
+    }
+  }
+}

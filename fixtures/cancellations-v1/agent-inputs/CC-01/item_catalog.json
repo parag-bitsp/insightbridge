@@ -1,0 +1,30 @@
+[
+  {
+    "product_id": "MILK-500",
+    "product_name": "Milk",
+    "pack_size": "500 ml pouch",
+    "unit_price_paise": 2800,
+    "currency": "INR"
+  },
+  {
+    "product_id": "BREAD-400",
+    "product_name": "Bread",
+    "pack_size": "400 g loaf",
+    "unit_price_paise": 4500,
+    "currency": "INR"
+  },
+  {
+    "product_id": "BANANA-6",
+    "product_name": "Bananas",
+    "pack_size": "6-piece pack",
+    "unit_price_paise": 4000,
+    "currency": "INR"
+  },
+  {
+    "product_id": "EGGS-6",
+    "product_name": "Eggs",
+    "pack_size": "6-piece carton",
+    "unit_price_paise": 6000,
+    "currency": "INR"
+  }
+]

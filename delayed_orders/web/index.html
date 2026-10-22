@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>InsightBridge</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/run-trace.js" defer></script>
+  <script src="/feedback.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="app-header">
+    <a class="brand" href="#home" aria-label="InsightBridge home"><span class="brand-mark" aria-hidden="true">i</span><span>InsightBridge</span></a>
+    <div class="header-actions"><a class="home-link" href="#home">Home</a><button id="library" class="quiet" hidden>Case records</button><a id="open-feedback" class="home-link" href="#feedback" aria-haspopup="dialog">Leave feedback</a><button id="reset-demo" class="quiet" type="button">Reset demo</button></div>
+  </header>
+  <div class="app-layout">
+    <aside id="sidebar" aria-label="Issues by category" hidden></aside>
+    <div class="workspace">
+      <main id="main" tabindex="-1"><p class="loading" role="status">Preparing your inbox…</p></main>
+      <footer class="app-footer"><span>Demo visits and feedback log a browser ID and IP address.</span><span>Decisions save on this browser. Jira is not connected.</span></footer>
+    </div>
+  </div>
+  <dialog id="evidence-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><div><h2 id="dialog-title">Supporting evidence</h2></div><button id="close-dialog" aria-label="Close evidence">Close</button></div>
+    <div id="dialog-content"></div>
+  </dialog>
+  <dialog id="feedback-dialog" class="feedback-dialog" aria-labelledby="feedback-title">
+    <div class="dialog-head"><h2 id="feedback-title">Share feedback</h2><button id="close-feedback" type="button" aria-label="Close feedback">Close</button></div>
+    <div id="feedback-dialog-content" class="feedback-dialog-content"></div>
+  </dialog>
+  <dialog id="rubric-dialog" class="rubric-dialog" aria-labelledby="rubric-title">
+    <div class="dialog-head"><h2 id="rubric-title">AI Decision and Evaluation Framework</h2><button id="close-rubric" type="button" aria-label="Close AI framework" autofocus>Close</button></div>
+    <div id="rubric-content" class="rubric-content" tabindex="0" aria-label="AI framework document"></div>
+  </dialog>
+  <dialog id="ticket-dialog" class="ticket-dialog" aria-labelledby="ticket-dialog-title">
+    <div class="dialog-head"><h2 id="ticket-dialog-title">Ticket details</h2><button id="close-ticket" type="button" aria-label="Close ticket" autofocus>Close</button></div>
+    <div id="ticket-dialog-content" class="ticket-dialog-content" tabindex="0" aria-label="Ticket details and acceptance criteria"></div>
+  </dialog>
+</body>
+</html>

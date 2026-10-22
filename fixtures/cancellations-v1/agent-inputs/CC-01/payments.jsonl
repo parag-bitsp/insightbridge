@@ -1,0 +1,10 @@
+{"source_id":"CC-01-PAY-007","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-007","captured_at":"2026-10-19T18:46:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-008","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-008","captured_at":"2026-10-19T18:50:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-009","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-009","captured_at":"2026-10-19T18:54:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-010","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-010","captured_at":"2026-10-19T19:00:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-001","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-001","captured_at":"2026-10-19T19:04:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-002","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-002","captured_at":"2026-10-19T19:05:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-003","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-003","captured_at":"2026-10-19T19:06:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-004","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-004","captured_at":"2026-10-19T19:07:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-005","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-005","captured_at":"2026-10-19T19:08:10+05:30","status":"captured","currency":"INR","amount_paise":20100}
+{"source_id":"CC-01-PAY-006","case_id":"CC-01","store_id":"GGN-A","order_id":"CC-01-ORD-006","captured_at":"2026-10-19T19:09:10+05:30","status":"captured","currency":"INR","amount_paise":20100}

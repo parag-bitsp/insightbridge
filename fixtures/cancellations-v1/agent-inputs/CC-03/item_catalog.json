@@ -1,0 +1,30 @@
+[
+  {
+    "product_id": "CURD-400",
+    "product_name": "Curd",
+    "pack_size": "400 g tub",
+    "unit_price_paise": 4500,
+    "currency": "INR"
+  },
+  {
+    "product_id": "PANEER-200",
+    "product_name": "Paneer",
+    "pack_size": "200 g pack",
+    "unit_price_paise": 9000,
+    "currency": "INR"
+  },
+  {
+    "product_id": "TOMATO-500",
+    "product_name": "Tomatoes",
+    "pack_size": "500 g pack",
+    "unit_price_paise": 3000,
+    "currency": "INR"
+  },
+  {
+    "product_id": "ONION-1KG",
+    "product_name": "Onions",
+    "pack_size": "1 kg bag",
+    "unit_price_paise": 3500,
+    "currency": "INR"
+  }
+]

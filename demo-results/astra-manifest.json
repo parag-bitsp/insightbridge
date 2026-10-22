@@ -1,0 +1,55 @@
+{
+  "cache_mode": "astra",
+  "inbox_sha256": "6d59451923fb31066fbe8de90f7961093b8a4bde16f24dae7c6098c52ff62eba",
+  "sources": [
+    {
+      "case_id": "GG-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "5a795100d9e4825832906e88e94ceb3d8d33339d2c8ac9bc445969d5445ce7ae"
+    },
+    {
+      "case_id": "GG-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "dbb296bbcb645837676742f295e864f25be95b79aadd44de0af56fed492f40e3"
+    },
+    {
+      "case_id": "GG-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "b14e410fcb0dac4a08bd5dc32e6c63b9ce909773dd815f39c9323d5607ca4578"
+    },
+    {
+      "case_id": "GG-04",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "270c28fe46ccdca8d63f5ac3056769a9ad3a146473ef90a08fe9593e63f3c88f"
+    },
+    {
+      "case_id": "CC-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "8c003303b52dcfaca8b9928fc0d5032614f21b246cb8c41e1355006fa4720499"
+    },
+    {
+      "case_id": "CC-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "dccca448dbb6ae43108e8a50f51e6c3d97170b2c4771ea41755a4829c831a2b1"
+    },
+    {
+      "case_id": "CC-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "0a1b2a26720144f30aff1d2a6d3035655ffcd2d91ff4b98ce05d6cbf0ab91365"
+    }
+  ]
+}

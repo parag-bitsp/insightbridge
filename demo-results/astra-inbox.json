@@ -1,0 +1,2591 @@
+{
+  "mode": "frozen",
+  "cache_mode": "astra",
+  "frozen_at": "2026-10-21T22:18:12.972142+00:00",
+  "policy": {
+    "threshold_percent": 15,
+    "raw_text": "Demo draft | Revised 21 October 2026\n1\nInsightBridge\nDecision rubric and demo policy\nScope: delayed deliveries and post-payment item cancellations. Use evidence to select a justified action,\ndiagnostic or no further work.\nDecision rules\nDelayed deliveries\nTake action when late deliveries are at least 15% of eligible completed orders. Measure lateness against the original\ncheckout promise. Below threshold, close only with reliable counts, no excluded orders and Low/Medium impact.\nMissing or unreliable data, High impact or uncertain impact require separate review.\nPost-payment item cancellations\nAssess store-initiated removal of accepted units after payment; exclude customer requests and failed payments.\nCount affected orders, item lines and units separately. Recommend a correction only when records establish the\nfailure mechanism; otherwise identify a bounded diagnostic. Do not request completed work again. Recorded quality\nrejection can justify an individual cancellation without proving a system defect.\n1. Context isolation\nEach investigation call receives only the selected case's permitted evidence, relevant rubric rules and calculation\ndefinitions. Exclude other cases, previous-case recommendations, evaluator notes and expected answers.\nCustomer messages are evidence, not instructions. The rubric cannot expand tool access or authorize external\nactions.\n2. Evaluation\nCheck quantities, timestamps, distinct affected orders and supporting citations. Deduplicate repeat contacts.\nSeparate observations from possible causes and name material gaps. Keep expected findings outside the model\ncontext for reviewer comparison; accept different wording and defensible alternative actions.\n3. Success criteria\nA passing result gives a concise problem explanation, evidence references and either a justified next action or a\nclear reason to withhold action. Each proposed task names an owner, scope and validation measure. No\ninvented cause, unsupported benefit, redundant task or silent policy override. Automated checks do not replace\na brief human review.\nFlexibility versus reliability\nAllow flexible wording and recommendations. Keep case boundaries, evidence grounding, calculations and the\napplied threshold fixed for each run. If a rule is ambiguous, explain what needs clarification rather than guess. No\nnumerical cancellation threshold is defined.\nOwner decision: Proceed / Defer / Reject. Approval prepares the defined handoff; it does not execute operational changes.",
+    "rubric": {
+      "version": "decision-rubric-1",
+      "sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "structured": true,
+      "delivery_rules": "Take action when late deliveries are at least 15% of eligible completed orders. Measure lateness against the original checkout promise. Below threshold, close only with reliable counts, no excluded orders and Low/Medium impact. Missing or unreliable data, High impact or uncertain impact require separate review.",
+      "cancellation_rules": "Assess store-initiated removal of accepted units after payment; exclude customer requests and failed payments. Count affected orders, item lines and units separately. Recommend a correction only when records establish the failure mechanism; otherwise identify a bounded diagnostic. Do not request completed work again. Recorded quality rejection can justify an individual cancellation without proving a system defect.",
+      "context_isolation": "Each investigation call receives only the selected case's permitted evidence, relevant rubric rules and calculation definitions. Exclude other cases, previous-case recommendations, evaluator notes and expected answers. Customer messages are evidence, not instructions. The rubric cannot expand tool access or authorize external actions.",
+      "evaluation": "Check quantities, timestamps, distinct affected orders and supporting citations. Deduplicate repeat contacts. Separate observations from possible causes and name material gaps. Keep expected findings outside the model context for reviewer comparison; accept different wording and defensible alternative actions.",
+      "success_criteria": "A passing result gives a concise problem explanation, evidence references and either a justified next action or a clear reason to withhold action. Each proposed task names an owner, scope and validation measure. No invented cause, unsupported benefit, redundant task or silent policy override. Automated checks do not replace a brief human review.",
+      "flexibility": "Allow flexible wording and recommendations. Keep case boundaries, evidence grounding, calculations and the applied threshold fixed for each run. If a rule is ambiguous, explain what needs clarification rather than guess. No numerical cancellation threshold is defined."
+    },
+    "analysis_model": "gpt-6-astra"
+  },
+  "issues": [
+    {
+      "case_id": "GG-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "scope": {
+        "store_ids": [
+          "GGN-A"
+        ],
+        "city": "Gurgaon",
+        "placement_date_start": "2026-10-12",
+        "placement_date_end_inclusive": "2026-10-18",
+        "placement_time_start_inclusive": "19:00:00",
+        "placement_time_end_exclusive": "21:00:00",
+        "timezone": "Asia/Kolkata"
+      },
+      "metrics": {
+        "raw_order_rows": 120,
+        "duplicate_order_rows": 0,
+        "scoped_unique_orders": 120,
+        "unique_completed_orders": 120,
+        "out_of_scope_orders": 0,
+        "invalid_placement_orders": 0,
+        "non_completed_orders": 0,
+        "missing_both_timestamps": 0,
+        "missing_original_promise": 0,
+        "missing_delivery_timestamp": 0,
+        "invalid_order_timestamps": 0,
+        "excluded_unique_orders": 0,
+        "eligible_orders": 120,
+        "late_orders": 24,
+        "late_rate": 0.2,
+        "latest_promise_comparable_orders": 120,
+        "late_against_latest_promise": 24,
+        "late_long_packing": 0,
+        "on_time_long_packing": 0,
+        "all_long_packing": 0,
+        "late_long_assignment_wait": 24,
+        "on_time_long_assignment_wait": 2,
+        "all_long_assignment_wait": 26,
+        "late_long_travel": 0,
+        "on_time_long_travel": 0,
+        "all_long_travel": 0,
+        "late_other": 0,
+        "no_eligible_nearby_rider": 24,
+        "expired_attempts_with_recorded_availability": 0,
+        "complete_operational_logs": 24,
+        "incomplete_operational_logs": 0,
+        "raw_feedback_rows": 4,
+        "distinct_feedback_records": 4,
+        "raw_support_rows": 3,
+        "support_contacts": 3,
+        "duplicate_support_rows": 0,
+        "contacted_unique_orders": 3,
+        "contacted_late_orders": 3,
+        "anonymous_reviews": 0,
+        "follow_up_contacts": 0,
+        "contacts_per_contacted_order": 1.0
+      },
+      "definitions": {
+        "late": "delivered_at > original_promised_latest_at",
+        "long_packing_minutes_exclusive": 12,
+        "long_post_packing_assignment_wait_minutes_exclusive": 10,
+        "long_pickup_to_delivery_minutes_exclusive": 15,
+        "availability_max_snapshot_age_minutes": 5
+      },
+      "stage_coverage": {
+        "packing": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "assignment_wait": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "travel": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        }
+      },
+      "coverage": {
+        "orders": {
+          "source": "orders",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "order_events": {
+          "source": "order_events",
+          "status": "available",
+          "lookup_response": null,
+          "total": 720,
+          "raw_rows": 720,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "promise_history": {
+          "source": "promise_history",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "feedback": {
+          "source": "feedback",
+          "status": "available",
+          "lookup_response": null,
+          "total": 4,
+          "raw_rows": 4,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 4,
+          "eligible_linked_orders": 4,
+          "late_linked_orders": 3
+        },
+        "assignment_attempts": {
+          "source": "assignment_attempts",
+          "status": "available",
+          "lookup_response": null,
+          "total": 144,
+          "raw_rows": 144,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "rider_availability": {
+          "source": "rider_availability",
+          "status": "available",
+          "lookup_response": null,
+          "total": 144,
+          "raw_rows": 144,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "label_prints": {
+          "source": "label_prints",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "packing_queues": {
+          "source": "packing_queues",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "staffing_rosters": {
+          "source": "staffing_rosters",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "travel_conditions": {
+          "source": "travel_conditions",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "safety_reports": {
+          "source": "safety_reports",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "supervisor_messages": {
+          "source": "supervisor_messages",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        }
+      },
+      "result": {
+        "issue_summary": "At GGN-A, 24 of 120 evening orders were late. The 20% late rate exceeds the 15% action threshold. All late orders waited a long time for a rider after packing. Ask dispatch operations to explain the delay.",
+        "impact": {
+          "rating": "Low",
+          "rationale": "Customers reported late meals and groceries. Their orders arrived. The reports show inconvenience. Effects on other customers are unknown.",
+          "evidence_refs": [
+            "feedback:GG-01-FDBK-000001",
+            "feedback:GG-01-FDBK-000002",
+            "feedback:GG-01-FDBK-000003",
+            "orders:GG-01-ORDR-000001"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "eligible_orders",
+            "value": 120
+          },
+          {
+            "key": "late_orders",
+            "value": 24
+          },
+          {
+            "key": "late_rate",
+            "value": 0.2
+          },
+          {
+            "key": "late_long_packing",
+            "value": 0
+          },
+          {
+            "key": "late_long_assignment_wait",
+            "value": 24
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "observation",
+            "text": "The late rate exceeds the action threshold. All late orders had long waits for rider assignment. Packing and travel stayed within the defined time limits. The cause is still unconfirmed.",
+            "evidence_refs": [
+              "metric:eligible_orders",
+              "metric:late_orders",
+              "metric:late_rate",
+              "metric:late_long_assignment_wait",
+              "metric:late_long_packing",
+              "metric:late_long_travel",
+              "metric:late_other"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "report",
+            "text": "Customers said orders stayed packed while waiting for a rider. These reports relate to specific orders. They do not show how many customers had the same experience.",
+            "evidence_refs": [
+              "feedback:GG-01-FDBK-000001",
+              "feedback:GG-01-FDBK-000002",
+              "feedback:GG-01-FDBK-000003"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Sample orders waited a long time after packing. Early assignment attempts expired when nearby riders were not eligible. Later records showed eligible riders before assignment succeeded.",
+            "evidence_refs": [
+              "observation:GG-01-ORD-00001",
+              "observation:GG-01-ORD-00002",
+              "observation:GG-01-ORD-00003",
+              "assignment_attempts:GG-01-ASGN-000001",
+              "assignment_attempts:GG-01-ASGN-000002",
+              "assignment_attempts:GG-01-ASGN-000003",
+              "assignment_attempts:GG-01-ASGN-000004",
+              "rider_availability:GG-01-AVAL-000001",
+              "rider_availability:GG-01-AVAL-000002",
+              "rider_availability:GG-01-AVAL-000003",
+              "rider_availability:GG-01-AVAL-000004"
+            ]
+          },
+          {
+            "id": "F4",
+            "kind": "hypothesis",
+            "text": "Rider eligibility rules may have contributed to the wait. A nearby rider may be unavailable or unable to accept an order. Expired attempts alone do not prove a dispatch fault.",
+            "evidence_refs": [
+              "rider_availability:GG-01-AVAL-000001",
+              "rider_availability:GG-01-AVAL-000002",
+              "assignment_attempts:GG-01-ASGN-000001",
+              "assignment_attempts:GG-01-ASGN-000002"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "Too few available riders could explain the waits.",
+            "support_refs": [
+              "rider_availability:GG-01-AVAL-000001",
+              "rider_availability:GG-01-AVAL-000003",
+              "rider_availability:GG-01-AVAL-000005"
+            ],
+            "counter_refs": [
+              "rider_availability:GG-01-AVAL-000002",
+              "rider_availability:GG-01-AVAL-000004",
+              "rider_availability:GG-01-AVAL-000006"
+            ],
+            "gaps": [
+              "The records show changes in rider eligibility. They do not explain those changes or show that more staff would help."
+            ]
+          }
+        ],
+        "gaps": [
+          "Why nearby riders were not eligible is unknown. The records do not show whether dispatch followed the right timing rules.",
+          "The detailed sample covers some late orders. It does not establish the cause of every delay."
+        ],
+        "decision": "recommend_actions",
+        "withholding_reason": null,
+        "recommendations": [
+          {
+            "id": "R1",
+            "action_type": "diagnostic",
+            "action": "Ask a dispatch specialist to explain the rider eligibility changes and expired assignment attempts. Identify whether a safe process change is needed.",
+            "scope": "GGN-A evening orders in this case. Focus on rider assignment after packing.",
+            "owner": "Dispatch operations lead with an assignment-system specialist",
+            "execution_priority": "Moderate",
+            "priority_reason": "The late rate requires action. Reported impact supports a focused review.",
+            "rationale": "Long rider waits are confirmed. A dispatch specialist must explain whether the rules caused avoidable delays.",
+            "finding_ids": [
+              "F1",
+              "F3",
+              "F4"
+            ],
+            "expected_outcome": "A short explanation of the rules involved and any proposed fix. State what remains unknown.",
+            "evaluation_measures": [
+              "Explain whether eligibility changes and expired attempts followed dispatch rules.",
+              "For any proposed fix, state how it would work and what checks it needs.",
+              "For any approved trial, track rider wait and lateness against the original promise."
+            ],
+            "guardrails": [
+              "Nearby riders alone do not prove a staff shortage or willingness to accept orders.",
+              "Keep safety and rider eligibility checks.",
+              "Staffing, dispatch, promise changes, and trials need separate approval.",
+              "Do not apply a sample explanation to every late order."
+            ],
+            "uncertainties": [
+              "Eligibility limits may be necessary.",
+              "A process change may not improve delivery times."
+            ],
+            "authorization_boundary": "Review only. Operational changes and trials need separate approval.",
+            "remaining_question": "Did dispatch rules require these waits, or could a safe process change reduce them?",
+            "human_work_reason": "external_expertise",
+            "required_sources": [
+              "assignment_attempts",
+              "rider_availability"
+            ],
+            "expertise_or_access_needed": "A specialist who understands rider eligibility and assignment retries.",
+            "gap_refs": []
+          }
+        ]
+      },
+      "triage_policy": {
+        "version": "delayed-delivery-configured-15-v1",
+        "threshold_percent": 15,
+        "failure_definition": "Delivery after the original checkout promise",
+        "rate_scope": "Distinct eligible orders within the selected store and placement period",
+        "action_rule": "At or above the threshold, propose justified remedial preparation or diagnostic work.",
+        "closure_rule": "Below threshold with completed deliveries and ordinary inconvenience, close the review with no human work.",
+        "exceptions": "Credible serious harm or an important blocked goal requires separate review regardless of rate. Unknown consequence evidence must not be assumed harmless.",
+        "missingness_rule": "An unknown denominator or exclusions that prevent a reliable below-threshold conclusion require review.",
+        "outcome": "action_required",
+        "late_orders": 24,
+        "eligible_orders": 120,
+        "late_rate": 0.2
+      },
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "checks": [
+          "current_output_contract",
+          "deterministic_figures",
+          "retrieved_citations",
+          "action_readiness",
+          "applied_policy"
+        ],
+        "semantic_quality": "not_scored"
+      }
+    },
+    {
+      "case_id": "GG-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "scope": {
+        "store_ids": [
+          "GGN-B"
+        ],
+        "city": "Gurgaon",
+        "placement_date_start": "2026-10-12",
+        "placement_date_end_inclusive": "2026-10-18",
+        "placement_time_start_inclusive": "19:00:00",
+        "placement_time_end_exclusive": "21:00:00",
+        "timezone": "Asia/Kolkata"
+      },
+      "metrics": {
+        "raw_order_rows": 120,
+        "duplicate_order_rows": 0,
+        "scoped_unique_orders": 120,
+        "unique_completed_orders": 120,
+        "out_of_scope_orders": 0,
+        "invalid_placement_orders": 0,
+        "non_completed_orders": 0,
+        "missing_both_timestamps": 0,
+        "missing_original_promise": 0,
+        "missing_delivery_timestamp": 0,
+        "invalid_order_timestamps": 0,
+        "excluded_unique_orders": 0,
+        "eligible_orders": 120,
+        "late_orders": 24,
+        "late_rate": 0.2,
+        "latest_promise_comparable_orders": 120,
+        "late_against_latest_promise": 24,
+        "late_long_packing": 24,
+        "on_time_long_packing": 2,
+        "all_long_packing": 26,
+        "late_long_assignment_wait": 0,
+        "on_time_long_assignment_wait": 0,
+        "all_long_assignment_wait": 0,
+        "late_long_travel": 0,
+        "on_time_long_travel": 0,
+        "all_long_travel": 0,
+        "late_other": 0,
+        "no_eligible_nearby_rider": 0,
+        "expired_attempts_with_recorded_availability": 0,
+        "complete_operational_logs": 0,
+        "incomplete_operational_logs": 0,
+        "raw_feedback_rows": 4,
+        "distinct_feedback_records": 4,
+        "raw_support_rows": 3,
+        "support_contacts": 3,
+        "duplicate_support_rows": 0,
+        "contacted_unique_orders": 3,
+        "contacted_late_orders": 3,
+        "anonymous_reviews": 0,
+        "follow_up_contacts": 0,
+        "contacts_per_contacted_order": 1.0
+      },
+      "definitions": {
+        "late": "delivered_at > original_promised_latest_at",
+        "long_packing_minutes_exclusive": 12,
+        "long_post_packing_assignment_wait_minutes_exclusive": 10,
+        "long_pickup_to_delivery_minutes_exclusive": 15,
+        "availability_max_snapshot_age_minutes": 5
+      },
+      "stage_coverage": {
+        "packing": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "assignment_wait": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "travel": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 24,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        }
+      },
+      "coverage": {
+        "orders": {
+          "source": "orders",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "order_events": {
+          "source": "order_events",
+          "status": "available",
+          "lookup_response": null,
+          "total": 720,
+          "raw_rows": 720,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "promise_history": {
+          "source": "promise_history",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "feedback": {
+          "source": "feedback",
+          "status": "available",
+          "lookup_response": null,
+          "total": 4,
+          "raw_rows": 4,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 4,
+          "eligible_linked_orders": 4,
+          "late_linked_orders": 3
+        },
+        "assignment_attempts": {
+          "source": "assignment_attempts",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "rider_availability": {
+          "source": "rider_availability",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "label_prints": {
+          "source": "label_prints",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "packing_queues": {
+          "source": "packing_queues",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 24
+        },
+        "staffing_rosters": {
+          "source": "staffing_rosters",
+          "status": "available",
+          "lookup_response": null,
+          "total": 7,
+          "raw_rows": 7,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 0,
+          "eligible_linked_orders": 0,
+          "late_linked_orders": 0
+        },
+        "travel_conditions": {
+          "source": "travel_conditions",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "safety_reports": {
+          "source": "safety_reports",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "supervisor_messages": {
+          "source": "supervisor_messages",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        }
+      },
+      "result": {
+        "issue_summary": "At GGN-B, 24 of 120 evening orders were late. The 20% late rate exceeds the 15% action threshold. All late orders took a long time to pack. Review the packing process before choosing a fix.",
+        "impact": {
+          "rating": "Low",
+          "rationale": "Customers reported late meals and waiting for groceries. Their orders arrived. The reports show inconvenience. Effects on other customers are unknown.",
+          "evidence_refs": [
+            "feedback:GG-02-FDBK-000001",
+            "feedback:GG-02-FDBK-000002",
+            "feedback:GG-02-FDBK-000003",
+            "orders:GG-02-ORDR-000001"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "eligible_orders",
+            "value": 120
+          },
+          {
+            "key": "late_orders",
+            "value": 24
+          },
+          {
+            "key": "late_rate",
+            "value": 0.2
+          },
+          {
+            "key": "late_long_packing",
+            "value": 24
+          },
+          {
+            "key": "late_long_assignment_wait",
+            "value": 0
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "observation",
+            "text": "The late rate exceeds the action threshold. All late orders took longer to pack than the defined limit. Rider assignment and travel stayed within their limits. The cause of slow packing is unconfirmed.",
+            "evidence_refs": [
+              "metric:eligible_orders",
+              "metric:late_orders",
+              "metric:late_rate",
+              "metric:late_long_packing",
+              "metric:late_long_assignment_wait",
+              "metric:late_long_travel",
+              "metric:late_other"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "report",
+            "text": "Customers reported long packing times and late deliveries. One said delivery was quick after pickup. Another confirmed that the groceries arrived.",
+            "evidence_refs": [
+              "feedback:GG-02-FDBK-000001",
+              "feedback:GG-02-FDBK-000002",
+              "feedback:GG-02-FDBK-000003"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Sample orders had long packing times, followed by short rider waits and trips. Promise and event records support this pattern. These short rider waits do not require an assignment review.",
+            "evidence_refs": [
+              "observation:GG-02-ORD-00001",
+              "observation:GG-02-ORD-00002",
+              "observation:GG-02-ORD-00003",
+              "observation:GG-02-ORD-00004",
+              "observation:GG-02-ORD-00005",
+              "promise_history:GG-02-PRMS-000001",
+              "order_events:GG-02-EVNT-000003",
+              "order_events:GG-02-EVNT-000006"
+            ]
+          },
+          {
+            "id": "F4",
+            "kind": "hypothesis",
+            "text": "Queues or delays within the packing process may explain the problem. Queue and roster records alone do not prove a staff shortage or identify the slow step.",
+            "evidence_refs": [
+              "packing_queues:GG-02-QUEU-000001",
+              "packing_queues:GG-02-QUEU-000002",
+              "packing_queues:GG-02-QUEU-000003",
+              "staffing_rosters:GG-02-STAF-000001",
+              "staffing_rosters:GG-02-STAF-000002",
+              "staffing_rosters:GG-02-STAF-000003"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "Label printing could delay packing. The recorded print attempts show no rejection.",
+            "support_refs": [],
+            "counter_refs": [
+              "label_prints:GG-02-PRNT-000001",
+              "label_prints:GG-02-PRNT-000002",
+              "label_prints:GG-02-PRNT-000003"
+            ],
+            "gaps": [
+              "Successful print requests do not confirm that printing and label handling ran smoothly. The sample covers only some orders."
+            ]
+          }
+        ],
+        "gaps": [
+          "The records do not separate active packing from interruptions and handoffs.",
+          "Roster numbers alone do not show whether more packing staff were needed."
+        ],
+        "decision": "recommend_actions",
+        "withholding_reason": null,
+        "recommendations": [
+          {
+            "id": "R1",
+            "action_type": "diagnostic",
+            "action": "Observe the evening packing process. Find where work slows down, stops, or waits for a handoff.",
+            "scope": "GGN-B evening packing for the order window in this case.",
+            "owner": "Store operations process lead",
+            "execution_priority": "Low",
+            "priority_reason": "The late rate requires action. Customer reports show inconvenience.",
+            "rationale": "All late orders took a long time to pack. Direct observation can help identify the slow step.",
+            "finding_ids": [
+              "F1",
+              "F3",
+              "F4"
+            ],
+            "expected_outcome": "A short explanation of the packing delay and any justified next step.",
+            "evaluation_measures": [
+              "Record active packing time, interruptions, and handoff waits.",
+              "Check whether the slow step fits the recorded delay pattern.",
+              "For any later approved change, track packing time, accuracy, and original-promise lateness."
+            ],
+            "guardrails": [
+              "Queue size and rosters alone do not prove a staff shortage.",
+              "Keep accuracy and safety checks.",
+              "Keep the original delivery promise when measuring lateness. A pattern alone does not prove a cause."
+            ],
+            "uncertainties": [
+              "Current conditions may differ from the dates reviewed.",
+              "No effective fix or expected improvement is established yet."
+            ],
+            "authorization_boundary": "Review only. Staffing changes and trials need separate approval.",
+            "remaining_question": "Which packing step or interruption explains the long packing times?",
+            "human_work_reason": "external_expertise",
+            "required_sources": [
+              "order_events",
+              "packing_queues",
+              "staffing_rosters",
+              "label_prints"
+            ],
+            "expertise_or_access_needed": "On-site access and knowledge of the packing process.",
+            "gap_refs": []
+          }
+        ]
+      },
+      "triage_policy": {
+        "version": "delayed-delivery-configured-15-v1",
+        "threshold_percent": 15,
+        "failure_definition": "Delivery after the original checkout promise",
+        "rate_scope": "Distinct eligible orders within the selected store and placement period",
+        "action_rule": "At or above the threshold, propose justified remedial preparation or diagnostic work.",
+        "closure_rule": "Below threshold with completed deliveries and ordinary inconvenience, close the review with no human work.",
+        "exceptions": "Credible serious harm or an important blocked goal requires separate review regardless of rate. Unknown consequence evidence must not be assumed harmless.",
+        "missingness_rule": "An unknown denominator or exclusions that prevent a reliable below-threshold conclusion require review.",
+        "outcome": "action_required",
+        "late_orders": 24,
+        "eligible_orders": 120,
+        "late_rate": 0.2
+      },
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "checks": [
+          "current_output_contract",
+          "deterministic_figures",
+          "retrieved_citations",
+          "action_readiness",
+          "applied_policy"
+        ],
+        "semantic_quality": "not_scored"
+      }
+    },
+    {
+      "case_id": "GG-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "scope": {
+        "store_ids": [
+          "GGN-C"
+        ],
+        "city": "Gurgaon",
+        "placement_date_start": "2026-10-12",
+        "placement_date_end_inclusive": "2026-10-18",
+        "placement_time_start_inclusive": "19:00:00",
+        "placement_time_end_exclusive": "21:00:00",
+        "timezone": "Asia/Kolkata"
+      },
+      "metrics": {
+        "raw_order_rows": 120,
+        "duplicate_order_rows": 0,
+        "scoped_unique_orders": 120,
+        "unique_completed_orders": 120,
+        "out_of_scope_orders": 0,
+        "invalid_placement_orders": 0,
+        "non_completed_orders": 0,
+        "missing_both_timestamps": 0,
+        "missing_original_promise": 0,
+        "missing_delivery_timestamp": 0,
+        "invalid_order_timestamps": 0,
+        "excluded_unique_orders": 0,
+        "eligible_orders": 120,
+        "late_orders": 2,
+        "late_rate": 0.016666666666666666,
+        "latest_promise_comparable_orders": 120,
+        "late_against_latest_promise": 2,
+        "late_long_packing": 0,
+        "on_time_long_packing": 0,
+        "all_long_packing": 0,
+        "late_long_assignment_wait": 0,
+        "on_time_long_assignment_wait": 0,
+        "all_long_assignment_wait": 0,
+        "late_long_travel": 0,
+        "on_time_long_travel": 0,
+        "all_long_travel": 0,
+        "late_other": 2,
+        "no_eligible_nearby_rider": 0,
+        "expired_attempts_with_recorded_availability": 0,
+        "complete_operational_logs": 0,
+        "incomplete_operational_logs": 0,
+        "raw_feedback_rows": 2,
+        "distinct_feedback_records": 2,
+        "raw_support_rows": 1,
+        "support_contacts": 1,
+        "duplicate_support_rows": 0,
+        "contacted_unique_orders": 1,
+        "contacted_late_orders": 1,
+        "anonymous_reviews": 0,
+        "follow_up_contacts": 0,
+        "contacts_per_contacted_order": 1.0
+      },
+      "definitions": {
+        "late": "delivered_at > original_promised_latest_at",
+        "long_packing_minutes_exclusive": 12,
+        "long_post_packing_assignment_wait_minutes_exclusive": 10,
+        "long_pickup_to_delivery_minutes_exclusive": 15,
+        "availability_max_snapshot_age_minutes": 5
+      },
+      "stage_coverage": {
+        "packing": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 2,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "assignment_wait": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 2,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "travel": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 2,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        }
+      },
+      "coverage": {
+        "orders": {
+          "source": "orders",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 2
+        },
+        "order_events": {
+          "source": "order_events",
+          "status": "available",
+          "lookup_response": null,
+          "total": 720,
+          "raw_rows": 720,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 2
+        },
+        "promise_history": {
+          "source": "promise_history",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 2
+        },
+        "feedback": {
+          "source": "feedback",
+          "status": "available",
+          "lookup_response": null,
+          "total": 2,
+          "raw_rows": 2,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 2,
+          "eligible_linked_orders": 2,
+          "late_linked_orders": 1
+        },
+        "assignment_attempts": {
+          "source": "assignment_attempts",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 2
+        },
+        "rider_availability": {
+          "source": "rider_availability",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 2
+        },
+        "label_prints": {
+          "source": "label_prints",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "packing_queues": {
+          "source": "packing_queues",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "staffing_rosters": {
+          "source": "staffing_rosters",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "travel_conditions": {
+          "source": "travel_conditions",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "safety_reports": {
+          "source": "safety_reports",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "supervisor_messages": {
+          "source": "supervisor_messages",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        }
+      },
+      "result": {
+        "issue_summary": "At GGN-C, 2 of 120 orders were late. The 1.67% late rate is below the 15% action threshold. Neither order had a long packing time, rider wait, or trip. Close the review under the policy.",
+        "impact": {
+          "rating": "Low",
+          "rationale": "One customer said the late order arrived and everything was fine. This shows limited inconvenience. The effect on the other late-order customer is unknown.",
+          "evidence_refs": [
+            "feedback:GG-03-FDBK-000001",
+            "orders:GG-03-ORDR-000001",
+            "observation:GG-03-ORD-00001",
+            "observation:GG-03-ORD-00002"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "eligible_orders",
+            "value": 120
+          },
+          {
+            "key": "late_orders",
+            "value": 2
+          },
+          {
+            "key": "late_rate",
+            "value": 0.016666666666666666
+          },
+          {
+            "key": "late_long_packing",
+            "value": 0
+          },
+          {
+            "key": "late_long_assignment_wait",
+            "value": 0
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "observation",
+            "text": "The late rate is below the action threshold. Lateness is measured against the original checkout promise.",
+            "evidence_refs": [
+              "metric:eligible_orders",
+              "metric:late_orders",
+              "metric:late_rate",
+              "promise_history:GG-03-PRMS-000001",
+              "orders:GG-03-ORDR-000001"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "observation",
+            "text": "Both late orders stayed within the defined packing, rider-wait, and travel limits. They fall under other delays. This category does not explain the cause.",
+            "evidence_refs": [
+              "observation:GG-03-ORD-00001",
+              "observation:GG-03-ORD-00002",
+              "metric:late_other"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "report",
+            "text": "One late-order customer said everything arrived and was fine. A separate customer reported an on-time delivery. These reports describe individual experiences.",
+            "evidence_refs": [
+              "feedback:GG-03-FDBK-000001",
+              "feedback:GG-03-FDBK-000002"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "Time before packing or the total delivery time may explain the missed promise.",
+            "support_refs": [
+              "order_events:GG-03-EVNT-000001",
+              "order_events:GG-03-EVNT-000002",
+              "promise_history:GG-03-PRMS-000001"
+            ],
+            "counter_refs": [
+              "observation:GG-03-ORD-00001",
+              "observation:GG-03-ORD-00002"
+            ],
+            "gaps": [
+              "The reason for the wait before packing is unknown.",
+              "The other late order has stage timings, but no detailed timeline was reviewed."
+            ]
+          }
+        ],
+        "gaps": [
+          "Only one late-order customer described the impact. Missing feedback does not prove there was no harm.",
+          "The cause is unconfirmed. The records do not justify staffing, dispatch, or packing changes."
+        ],
+        "decision": "withhold_intervention",
+        "withholding_reason": "Close the review. The 1.67% late rate is below 15%, and the order counts are reliable. The available customer report shows limited inconvenience. The other customer's experience and the delay causes remain unknown. No further task is justified under the policy.",
+        "recommendations": []
+      },
+      "triage_policy": {
+        "version": "delayed-delivery-configured-15-v1",
+        "threshold_percent": 15,
+        "failure_definition": "Delivery after the original checkout promise",
+        "rate_scope": "Distinct eligible orders within the selected store and placement period",
+        "action_rule": "At or above the threshold, propose justified remedial preparation or diagnostic work.",
+        "closure_rule": "Below threshold with completed deliveries and ordinary inconvenience, close the review with no human work.",
+        "exceptions": "Credible serious harm or an important blocked goal requires separate review regardless of rate. Unknown consequence evidence must not be assumed harmless.",
+        "missingness_rule": "An unknown denominator or exclusions that prevent a reliable below-threshold conclusion require review.",
+        "outcome": "below_threshold",
+        "late_orders": 2,
+        "eligible_orders": 120,
+        "late_rate": 0.016666666666666666
+      },
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "checks": [
+          "current_output_contract",
+          "deterministic_figures",
+          "retrieved_citations",
+          "action_readiness",
+          "applied_policy"
+        ],
+        "semantic_quality": "not_scored"
+      }
+    },
+    {
+      "case_id": "GG-04",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "scope": {
+        "store_ids": [
+          "GGN-D"
+        ],
+        "city": "Gurgaon",
+        "placement_date_start": "2026-10-12",
+        "placement_date_end_inclusive": "2026-10-18",
+        "placement_time_start_inclusive": "19:00:00",
+        "placement_time_end_exclusive": "21:00:00",
+        "timezone": "Asia/Kolkata"
+      },
+      "metrics": {
+        "raw_order_rows": 120,
+        "duplicate_order_rows": 0,
+        "scoped_unique_orders": 120,
+        "unique_completed_orders": 120,
+        "out_of_scope_orders": 0,
+        "invalid_placement_orders": 0,
+        "non_completed_orders": 0,
+        "missing_both_timestamps": 0,
+        "missing_original_promise": 0,
+        "missing_delivery_timestamp": 0,
+        "invalid_order_timestamps": 0,
+        "excluded_unique_orders": 0,
+        "eligible_orders": 120,
+        "late_orders": 1,
+        "late_rate": 0.008333333333333333,
+        "latest_promise_comparable_orders": 120,
+        "late_against_latest_promise": 1,
+        "late_long_packing": 0,
+        "on_time_long_packing": 0,
+        "all_long_packing": 0,
+        "late_long_assignment_wait": 0,
+        "on_time_long_assignment_wait": 0,
+        "all_long_assignment_wait": 0,
+        "late_long_travel": 0,
+        "on_time_long_travel": 0,
+        "all_long_travel": 0,
+        "late_other": 1,
+        "no_eligible_nearby_rider": 0,
+        "expired_attempts_with_recorded_availability": 0,
+        "complete_operational_logs": 0,
+        "incomplete_operational_logs": 0,
+        "raw_feedback_rows": 2,
+        "distinct_feedback_records": 2,
+        "raw_support_rows": 1,
+        "support_contacts": 1,
+        "duplicate_support_rows": 0,
+        "contacted_unique_orders": 1,
+        "contacted_late_orders": 1,
+        "anonymous_reviews": 0,
+        "follow_up_contacts": 0,
+        "contacts_per_contacted_order": 1.0
+      },
+      "definitions": {
+        "late": "delivered_at > original_promised_latest_at",
+        "long_packing_minutes_exclusive": 12,
+        "long_post_packing_assignment_wait_minutes_exclusive": 10,
+        "long_pickup_to_delivery_minutes_exclusive": 15,
+        "availability_max_snapshot_age_minutes": 5
+      },
+      "stage_coverage": {
+        "packing": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 1,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "assignment_wait": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 1,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        },
+        "travel": {
+          "scoped_measured_orders": 120,
+          "scoped_missing_orders": 0,
+          "eligible_measured_orders": 120,
+          "eligible_missing_orders": 0,
+          "late_measured_orders": 1,
+          "late_missing_orders": 0,
+          "units": "minutes",
+          "source": "order_events",
+          "denominator_scope": "eligible orders unless marked scoped"
+        }
+      },
+      "coverage": {
+        "orders": {
+          "source": "orders",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 1
+        },
+        "order_events": {
+          "source": "order_events",
+          "status": "available",
+          "lookup_response": null,
+          "total": 720,
+          "raw_rows": 720,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 1
+        },
+        "promise_history": {
+          "source": "promise_history",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 1
+        },
+        "feedback": {
+          "source": "feedback",
+          "status": "available",
+          "lookup_response": null,
+          "total": 2,
+          "raw_rows": 2,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 2,
+          "eligible_linked_orders": 2,
+          "late_linked_orders": 1
+        },
+        "assignment_attempts": {
+          "source": "assignment_attempts",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 1
+        },
+        "rider_availability": {
+          "source": "rider_availability",
+          "status": "available",
+          "lookup_response": null,
+          "total": 120,
+          "raw_rows": 120,
+          "duplicate_rows": 0,
+          "scoped_linked_orders": 120,
+          "eligible_linked_orders": 120,
+          "late_linked_orders": 1
+        },
+        "label_prints": {
+          "source": "label_prints",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "packing_queues": {
+          "source": "packing_queues",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "staffing_rosters": {
+          "source": "staffing_rosters",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "travel_conditions": {
+          "source": "travel_conditions",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "safety_reports": {
+          "source": "safety_reports",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        },
+        "supervisor_messages": {
+          "source": "supervisor_messages",
+          "status": "not_collected",
+          "lookup_response": null,
+          "total": null,
+          "raw_rows": null,
+          "duplicate_rows": null,
+          "scoped_linked_orders": null,
+          "eligible_linked_orders": null,
+          "late_linked_orders": null
+        }
+      },
+      "result": {
+        "issue_summary": "At GGN-D, 1 of 120 orders was late. The 0.83% late rate is below the 15% action threshold. The customer received everything and reported a small delay. Close the review.",
+        "impact": {
+          "rating": "Low",
+          "rationale": "The customer received all items after a small delay. The report shows inconvenience. It does not indicate serious harm or a missed essential need.",
+          "evidence_refs": [
+            "feedback:GG-04-FDBK-000001",
+            "orders:GG-04-ORDR-000001",
+            "observation:GG-04-ORD-00001"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "eligible_orders",
+            "value": 120
+          },
+          {
+            "key": "late_orders",
+            "value": 1
+          },
+          {
+            "key": "late_rate",
+            "value": 0.008333333333333333
+          },
+          {
+            "key": "late_long_packing",
+            "value": 0
+          },
+          {
+            "key": "late_long_assignment_wait",
+            "value": 0
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "observation",
+            "text": "One completed order missed its original checkout promise. The latest promise was unchanged. The late rate is below the action threshold.",
+            "evidence_refs": [
+              "metric:eligible_orders",
+              "metric:late_orders",
+              "metric:late_rate",
+              "observation:GG-04-ORD-00001",
+              "orders:GG-04-ORDR-000001",
+              "promise_history:GG-04-PRMS-000001"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "report",
+            "text": "The customer said the biscuits and soap arrived shortly after the promise. All items were received. A positive review relates to a different order.",
+            "evidence_refs": [
+              "feedback:GG-04-FDBK-000001",
+              "feedback:GG-04-FDBK-000002"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Packing, rider wait, and travel stayed within the defined time limits. The order falls under other delays. The cause is unknown.",
+            "evidence_refs": [
+              "observation:GG-04-ORD-00001",
+              "metric:late_long_packing",
+              "metric:late_long_assignment_wait",
+              "metric:late_long_travel",
+              "metric:late_other"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "Time before packing or the combined delivery timeline may explain the small delay.",
+            "support_refs": [
+              "order_events:GG-04-EVNT-000001",
+              "order_events:GG-04-EVNT-000002",
+              "order_events:GG-04-EVNT-000006",
+              "promise_history:GG-04-PRMS-000001"
+            ],
+            "counter_refs": [
+              "observation:GG-04-ORD-00001"
+            ],
+            "gaps": [
+              "The records do not explain when packing started or whether that timing could have been improved."
+            ]
+          }
+        ],
+        "gaps": [
+          "The cause remains unknown. The order counts and below-threshold result are reliable.",
+          "Customer reports show limited inconvenience. They do not cover every customer's experience."
+        ],
+        "decision": "withhold_intervention",
+        "withholding_reason": "Close the review. The 0.83% late rate is below 15%. The order arrived, and the customer reported limited inconvenience. The records do not justify further investigation or operational changes.",
+        "recommendations": []
+      },
+      "triage_policy": {
+        "version": "delayed-delivery-configured-15-v1",
+        "threshold_percent": 15,
+        "failure_definition": "Delivery after the original checkout promise",
+        "rate_scope": "Distinct eligible orders within the selected store and placement period",
+        "action_rule": "At or above the threshold, propose justified remedial preparation or diagnostic work.",
+        "closure_rule": "Below threshold with completed deliveries and ordinary inconvenience, close the review with no human work.",
+        "exceptions": "Credible serious harm or an important blocked goal requires separate review regardless of rate. Unknown consequence evidence must not be assumed harmless.",
+        "missingness_rule": "An unknown denominator or exclusions that prevent a reliable below-threshold conclusion require review.",
+        "outcome": "below_threshold",
+        "late_orders": 1,
+        "eligible_orders": 120,
+        "late_rate": 0.008333333333333333
+      },
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "checks": [
+          "current_output_contract",
+          "deterministic_figures",
+          "retrieved_citations",
+          "action_readiness",
+          "applied_policy"
+        ],
+        "semantic_quality": "not_scored"
+      }
+    },
+    {
+      "category": "cancellation",
+      "title": "Post-payment item cancellations",
+      "case_id": "CC-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "item_label": "Milk - 500 ml pouch",
+      "scope": {
+        "store_ids": [
+          "GGN-A"
+        ],
+        "city": "Gurgaon",
+        "placement_time_start_inclusive": "18:40:00",
+        "placement_time_end_exclusive": "19:40:00",
+        "timezone": "Asia/Kolkata",
+        "supporting_records_start": "2026-10-19T18:35:00+05:30",
+        "population_basis": "Complete authored order population for this small synthetic case; not a representative store cancellation rate.",
+        "placement_date_start": "2026-10-19",
+        "placement_date_end_inclusive": "2026-10-19"
+      },
+      "metrics": {
+        "paid_orders": 10,
+        "paid_order_lines": 40,
+        "affected_orders": 6,
+        "cancelled_order_lines": 6,
+        "cancelled_units": 12,
+        "cancelled_item_value_paise": 33600,
+        "complaint_records": 8,
+        "complained_unique_orders": 6,
+        "follow_up_contacts": 2,
+        "unaffected_orders": 4
+      },
+      "definitions": {
+        "post_payment_cancellation": "A store removes accepted item quantity after successful payment capture and before delivery.",
+        "follow_up": "Another contact about the same order; not another affected order.",
+        "quantity_unit": "One retail pack of the stated pack size; two 500 ml pouches count as two units.",
+        "money": "Integer INR paise; line prices include all charges in this authored example."
+      },
+      "coverage": {
+        "orders": {
+          "path": "orders.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "order_lines": {
+          "path": "order_lines.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 40
+        },
+        "payments": {
+          "path": "payments.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "feedback": {
+          "path": "feedback.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 8
+        },
+        "inventory_events": {
+          "path": "inventory_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 5
+        },
+        "availability_checks": {
+          "path": "availability_checks.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "availability_updates": {
+          "path": "availability_updates.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 5
+        },
+        "pick_events": {
+          "path": "pick_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "cancellation_events": {
+          "path": "cancellation_events.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 6
+        },
+        "stock_counts": {
+          "path": "stock_counts.jsonl",
+          "status": "not_collected",
+          "coverage": "Focus product only within this case.",
+          "note": "No records were collected; this is not an observed zero.",
+          "raw_rows": null
+        },
+        "quality_inspections": {
+          "path": "quality_inspections.jsonl",
+          "status": "not_collected",
+          "coverage": "Focus product only within this case.",
+          "note": "No records were collected; this is not an observed zero.",
+          "raw_rows": null
+        }
+      },
+      "stage_coverage": {},
+      "result": {
+        "issue_summary": "At GGN-A, checkout showed milk in stock after recorded stock reached zero. Six paid orders each lost two 500 ml milk pouches. Other groceries were delivered. The zero-stock update waited for the scheduled refresh and was then applied.",
+        "impact": {
+          "rating": "Medium",
+          "rationale": "Customers lost milk after payment. One made an extra shopping trip. Another said milk was the main reason for ordering. Only the milk items were cancelled. This small case does not show the wider cancellation rate.",
+          "evidence_refs": [
+            "metric:affected_orders",
+            "metric:cancelled_units",
+            "feedback:CC-01-FB-001",
+            "feedback:CC-01-FB-003",
+            "orders:CC-01-ORD-001",
+            "orders:CC-01-ORD-006"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "paid_orders",
+            "value": 10
+          },
+          {
+            "key": "paid_order_lines",
+            "value": 40
+          },
+          {
+            "key": "affected_orders",
+            "value": 6
+          },
+          {
+            "key": "cancelled_order_lines",
+            "value": 6
+          },
+          {
+            "key": "cancelled_units",
+            "value": 12
+          },
+          {
+            "key": "cancelled_item_value_paise",
+            "value": 33600
+          },
+          {
+            "key": "complaint_records",
+            "value": 8
+          },
+          {
+            "key": "complained_unique_orders",
+            "value": 6
+          },
+          {
+            "key": "follow_up_contacts",
+            "value": 2
+          },
+          {
+            "key": "unaffected_orders",
+            "value": 4
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "report",
+            "text": "Customers reported milk removal after payment. Other groceries arrived. Two follow-up messages concern orders already counted.",
+            "evidence_refs": [
+              "feedback:CC-01-FB-001",
+              "feedback:CC-01-FB-002",
+              "feedback:CC-01-FB-003",
+              "feedback:CC-01-FB-004",
+              "feedback:CC-01-FB-005",
+              "feedback:CC-01-FB-006",
+              "feedback:CC-01-FB-007",
+              "feedback:CC-01-FB-008"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "observation",
+            "text": "Orders 001-006 were paid at 19:04:10-19:09:10. The store cancelled their milk at 19:11-19:16 as out of stock. Each lost two pouches. Cancelled item value was 33,600 paise (Rs 336). Refund completion is unknown. Four orders were unaffected.",
+            "evidence_refs": [
+              "payments:CC-01-PAY-001",
+              "payments:CC-01-PAY-002",
+              "payments:CC-01-PAY-003",
+              "payments:CC-01-PAY-004",
+              "payments:CC-01-PAY-005",
+              "payments:CC-01-PAY-006",
+              "cancellation_events:CC-01-CANCEL-001",
+              "cancellation_events:CC-01-CANCEL-002",
+              "cancellation_events:CC-01-CANCEL-003",
+              "cancellation_events:CC-01-CANCEL-004",
+              "cancellation_events:CC-01-CANCEL-005",
+              "cancellation_events:CC-01-CANCEL-006",
+              "metric:cancelled_order_lines",
+              "metric:cancelled_units",
+              "metric:cancelled_item_value_paise",
+              "metric:unaffected_orders"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Recorded stock reached zero at 19:02. Checkout still used an earlier snapshot showing two units. The zero-stock update waited for the 720-second refresh and applied at 19:14. Six orders were accepted during this gap. The update has already completed.",
+            "evidence_refs": [
+              "inventory_events:CC-01-STOCK-ZERO",
+              "availability_updates:CC-01-UPD-1902",
+              "availability_updates:CC-01-UPD-QUEUED",
+              "availability_updates:CC-01-UPD-APPLIED",
+              "availability_checks:CC-01-CHECK-001",
+              "availability_checks:CC-01-CHECK-002",
+              "availability_checks:CC-01-CHECK-003",
+              "availability_checks:CC-01-CHECK-004",
+              "availability_checks:CC-01-CHECK-005",
+              "availability_checks:CC-01-CHECK-006"
+            ]
+          },
+          {
+            "id": "F4",
+            "kind": "observation",
+            "text": "Pickers found no milk on the shelf or in the backroom for all six orders. Earlier milk picks succeeded. The records support stock depletion and outdated checkout availability. They do not independently confirm the physical stock count.",
+            "evidence_refs": [
+              "pick_events:CC-01-PICK-001",
+              "pick_events:CC-01-PICK-002",
+              "pick_events:CC-01-PICK-003",
+              "pick_events:CC-01-PICK-004",
+              "pick_events:CC-01-PICK-005",
+              "pick_events:CC-01-PICK-006",
+              "pick_events:CC-01-PICK-007",
+              "pick_events:CC-01-PICK-008",
+              "pick_events:CC-01-PICK-009",
+              "pick_events:CC-01-PICK-010"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "An update outage could explain outdated availability.",
+            "support_refs": [
+              "availability_updates:CC-01-UPD-1902"
+            ],
+            "counter_refs": [
+              "availability_updates:CC-01-UPD-QUEUED",
+              "availability_updates:CC-01-UPD-APPLIED"
+            ],
+            "gaps": [
+              "The records show a scheduled wait, followed by a successful update. They do not establish an outage."
+            ]
+          },
+          {
+            "explanation": "Unrecorded stock loss or quality issues could also have contributed.",
+            "support_refs": [],
+            "counter_refs": [
+              "inventory_events:CC-01-STOCK-ZERO",
+              "pick_events:CC-01-PICK-001",
+              "pick_events:CC-01-PICK-006",
+              "cancellation_events:CC-01-CANCEL-001",
+              "cancellation_events:CC-01-CANCEL-006"
+            ],
+            "gaps": [
+              "Stock counts and quality inspections were not provided. This does not establish an extra failure or change the documented refresh delay."
+            ]
+          }
+        ],
+        "gaps": [
+          "Physical stock counts and quality inspections were not provided.",
+          "A safe design for blocking checkout at zero stock needs engineering input.",
+          "Checkout performance after the refresh and refund completion are unknown."
+        ],
+        "decision": "recommend_actions",
+        "withholding_reason": null,
+        "recommendations": [
+          {
+            "id": "R1",
+            "action_type": "corrective_change",
+            "action": "Prepare a change proposal to block milk checkout when recorded stock reaches zero. Cover the gap before the scheduled refresh. Include a design, test plan and results, and rollback plan.",
+            "scope": "GGN-A, MILK-500 stock updates and checkout only.",
+            "owner": "Availability and checkout engineering owner",
+            "execution_priority": "High",
+            "priority_reason": "Six paid orders lost milk during the update gap. Preventing a repeat deserves follow-up.",
+            "rationale": "Checkout accepted orders after stock reached zero. A targeted checkout control addresses this confirmed gap.",
+            "finding_ids": [
+              "F2",
+              "F3",
+              "F4"
+            ],
+            "expected_outcome": "A proposal showing how checkout will stop using outdated positive stock after a zero-stock event.",
+            "evaluation_measures": [
+              "Test a zero-stock event between scheduled refreshes. Confirm checkout stops accepting the item.",
+              "Measure the time from zero stock to checkout blocking.",
+              "Test restocking, repeated events, events received in the wrong order, checkout speed, and rollback."
+            ],
+            "guardrails": [
+              "This review does not authorize system changes.",
+              "Implementation and rollout need separate approval.",
+              "Allow valid restocking and retain quality checks.",
+              "Do not claim refunds, recovered sales, or wider cancellation improvements."
+            ],
+            "uncertainties": [
+              "System design, event handling, and performance costs need engineering review.",
+              "Other stores and products need separate validation."
+            ],
+            "authorization_boundary": "Proposal only. Engineering access, testing, and deployment need separate authorization.",
+            "remaining_question": "How can checkout block zero stock promptly while handling restocking safely?",
+            "human_work_reason": "external_expertise",
+            "required_sources": [
+              "inventory_events",
+              "availability_updates",
+              "availability_checks"
+            ],
+            "expertise_or_access_needed": "Engineering expertise and approved access to the system and a test environment.",
+            "gap_refs": []
+          }
+        ]
+      },
+      "triage_policy": null,
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "case_scoped": true,
+        "deterministic_metrics": true,
+        "citations": true,
+        "human_review_required": true
+      }
+    },
+    {
+      "category": "cancellation",
+      "title": "Post-payment item cancellations",
+      "case_id": "CC-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "item_label": "Atta - 5 kg bag",
+      "scope": {
+        "store_ids": [
+          "GGN-B"
+        ],
+        "city": "Gurgaon",
+        "placement_time_start_inclusive": "18:40:00",
+        "placement_time_end_exclusive": "19:40:00",
+        "timezone": "Asia/Kolkata",
+        "supporting_records_start": "2026-10-19T18:35:00+05:30",
+        "population_basis": "Complete authored order population for this small synthetic case; not a representative store cancellation rate.",
+        "placement_date_start": "2026-10-19",
+        "placement_date_end_inclusive": "2026-10-19"
+      },
+      "metrics": {
+        "paid_orders": 10,
+        "paid_order_lines": 40,
+        "affected_orders": 6,
+        "cancelled_order_lines": 6,
+        "cancelled_units": 6,
+        "cancelled_item_value_paise": 147000,
+        "complaint_records": 8,
+        "complained_unique_orders": 6,
+        "follow_up_contacts": 2,
+        "unaffected_orders": 4
+      },
+      "definitions": {
+        "post_payment_cancellation": "A store removes accepted item quantity after successful payment capture and before delivery.",
+        "follow_up": "Another contact about the same order; not another affected order.",
+        "quantity_unit": "One retail pack of the stated pack size; two 500 ml pouches count as two units.",
+        "money": "Integer INR paise; line prices include all charges in this authored example."
+      },
+      "coverage": {
+        "orders": {
+          "path": "orders.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "order_lines": {
+          "path": "order_lines.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 40
+        },
+        "payments": {
+          "path": "payments.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "feedback": {
+          "path": "feedback.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 8
+        },
+        "inventory_events": {
+          "path": "inventory_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 6
+        },
+        "availability_checks": {
+          "path": "availability_checks.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "availability_updates": {
+          "path": "availability_updates.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 6
+        },
+        "pick_events": {
+          "path": "pick_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "cancellation_events": {
+          "path": "cancellation_events.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 6
+        },
+        "stock_counts": {
+          "path": "stock_counts.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 1
+        },
+        "quality_inspections": {
+          "path": "quality_inspections.jsonl",
+          "status": "not_collected",
+          "coverage": "Focus product only within this case.",
+          "note": "No records were collected; this is not an observed zero.",
+          "raw_rows": null
+        }
+      },
+      "stage_coverage": {},
+      "result": {
+        "issue_summary": "At GGN-B, six paid orders each lost one 5 kg atta bag. Pickers could not find the item. Other groceries arrived. A later count found zero sellable bags while the system showed eight. Stock and checkout availability were then corrected.",
+        "impact": {
+          "rating": "Medium",
+          "rationale": "Customers lost atta after payment. One needed it that evening. Two contacted support again. Cancelled item value was 147,000 paise (Rs 1,470). Refund completion is unknown. This small case does not show the wider cancellation rate.",
+          "evidence_refs": [
+            "metric:affected_orders",
+            "metric:cancelled_item_value_paise",
+            "metric:follow_up_contacts",
+            "feedback:CC-02-FB-003",
+            "feedback:CC-02-FB-006",
+            "orders:CC-02-ORD-001"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "paid_orders",
+            "value": 10
+          },
+          {
+            "key": "paid_order_lines",
+            "value": 40
+          },
+          {
+            "key": "affected_orders",
+            "value": 6
+          },
+          {
+            "key": "cancelled_order_lines",
+            "value": 6
+          },
+          {
+            "key": "cancelled_units",
+            "value": 6
+          },
+          {
+            "key": "cancelled_item_value_paise",
+            "value": 147000
+          },
+          {
+            "key": "complaint_records",
+            "value": 8
+          },
+          {
+            "key": "complained_unique_orders",
+            "value": 6
+          },
+          {
+            "key": "follow_up_contacts",
+            "value": 2
+          },
+          {
+            "key": "unaffected_orders",
+            "value": 4
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "report",
+            "text": "Customers reported atta removal after payment. Other groceries arrived. Two follow-up messages concern orders already counted.",
+            "evidence_refs": [
+              "feedback:CC-02-FB-001",
+              "feedback:CC-02-FB-003",
+              "feedback:CC-02-FB-005",
+              "feedback:CC-02-FB-006",
+              "feedback:CC-02-FB-007",
+              "feedback:CC-02-FB-008"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "observation",
+            "text": "Orders 001-006 were paid at 19:04:10-19:09:10. The store cancelled one atta bag per order at 19:11-19:16 because it could not be found. Other items arrived. Four earlier orders were unaffected.",
+            "evidence_refs": [
+              "payments:CC-02-PAY-001",
+              "payments:CC-02-PAY-002",
+              "payments:CC-02-PAY-003",
+              "payments:CC-02-PAY-004",
+              "payments:CC-02-PAY-005",
+              "payments:CC-02-PAY-006",
+              "cancellation_events:CC-02-CANCEL-001",
+              "cancellation_events:CC-02-CANCEL-002",
+              "cancellation_events:CC-02-CANCEL-003",
+              "cancellation_events:CC-02-CANCEL-004",
+              "cancellation_events:CC-02-CANCEL-005",
+              "cancellation_events:CC-02-CANCEL-006",
+              "metric:unaffected_orders",
+              "orders:CC-02-ORD-001",
+              "orders:CC-02-ORD-006"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Earlier picks reduced recorded stock from 12 bags to eight. Each stock update reached checkout two seconds later. Six later orders were accepted against that balance. Pickers then found no atta on the shelf or in the backroom. The records point to inaccurate stock records.",
+            "evidence_refs": [
+              "inventory_events:CC-02-INV-INITIAL",
+              "inventory_events:CC-02-STOCK-007",
+              "inventory_events:CC-02-STOCK-008",
+              "inventory_events:CC-02-STOCK-009",
+              "inventory_events:CC-02-STOCK-010",
+              "availability_updates:CC-02-UPD-007",
+              "availability_updates:CC-02-UPD-008",
+              "availability_updates:CC-02-UPD-009",
+              "availability_updates:CC-02-UPD-010",
+              "availability_checks:CC-02-CHECK-001",
+              "availability_checks:CC-02-CHECK-002",
+              "availability_checks:CC-02-CHECK-003",
+              "availability_checks:CC-02-CHECK-004",
+              "availability_checks:CC-02-CHECK-005",
+              "availability_checks:CC-02-CHECK-006",
+              "pick_events:CC-02-PICK-001",
+              "pick_events:CC-02-PICK-002",
+              "pick_events:CC-02-PICK-003",
+              "pick_events:CC-02-PICK-004",
+              "pick_events:CC-02-PICK-005"
+            ]
+          },
+          {
+            "id": "F4",
+            "kind": "observation",
+            "text": "At 19:18, a supervisor counted zero sellable bags against eight in the system. Stock was corrected at 19:20. Checkout availability reached zero at 19:20:02. That correction is complete. The count does not explain how or when the mismatch began.",
+            "evidence_refs": [
+              "stock_counts:CC-02-COUNT-001",
+              "inventory_events:CC-02-INV-COUNT-CORRECTION",
+              "availability_updates:CC-02-UPD-COUNT-CORRECTION"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "An incorrect opening balance or an unrecorded stock movement could explain the mismatch.",
+            "support_refs": [
+              "inventory_events:CC-02-INV-INITIAL",
+              "stock_counts:CC-02-COUNT-001"
+            ],
+            "counter_refs": [
+              "pick_events:CC-02-PICK-007",
+              "pick_events:CC-02-PICK-010"
+            ],
+            "gaps": [
+              "Earlier successful picks confirm some stock existed. They do not confirm the opening quantity or explain the missing stock."
+            ]
+          },
+          {
+            "explanation": "Slow stock updates could explain cancellations.",
+            "support_refs": [],
+            "counter_refs": [
+              "availability_updates:CC-02-UPD-010",
+              "availability_checks:CC-02-CHECK-001",
+              "availability_checks:CC-02-CHECK-006",
+              "availability_updates:CC-02-UPD-COUNT-CORRECTION"
+            ],
+            "gaps": [
+              "The recorded updates reached checkout promptly. This case does not establish an update delay or wider software fault."
+            ]
+          },
+          {
+            "explanation": "Quality rejection could have contributed to missing stock.",
+            "support_refs": [],
+            "counter_refs": [
+              "cancellation_events:CC-02-CANCEL-001",
+              "cancellation_events:CC-02-CANCEL-006"
+            ],
+            "gaps": [
+              "Quality inspections were not provided. The recorded cancellation reason was item not found."
+            ]
+          }
+        ],
+        "gaps": [
+          "The cause and start time of the stock mismatch are unknown.",
+          "Quality inspections were not provided. They are not needed to confirm the recorded item-not-found cancellations.",
+          "No checkout records after the correction show whether the fix remained effective."
+        ],
+        "decision": "recommend_actions",
+        "withholding_reason": null,
+        "recommendations": [
+          {
+            "id": "R1",
+            "action_type": "diagnostic",
+            "action": "Review how opening stock and stock movements are recorded. Observe the store process and review system settings. Identify any control gap that could explain the eight-bag mismatch.",
+            "scope": "GGN-B, ATTA-5KG only. Focus on how the mismatch arose.",
+            "owner": "Store inventory-control lead with inventory-system support",
+            "execution_priority": "Moderate",
+            "priority_reason": "Six paid orders lost atta. Stock has already been corrected. No continuing issue is shown.",
+            "rationale": "Stock records did not match the physical count. Updates reached checkout promptly. The earlier recording or stock-handling problem remains unknown.",
+            "finding_ids": [
+              "F3",
+              "F4"
+            ],
+            "expected_outcome": "A short control review with any supported fix. State if the historical cause cannot be confirmed.",
+            "evaluation_measures": [
+              "Document how opening stock and stock movements enter the system.",
+              "Link any proposed fix to a confirmed control gap.",
+              "Separate confirmed incident facts from risks seen in the current process."
+            ],
+            "guardrails": [
+              "Do not repeat the completed stock correction.",
+              "A later count does not establish earlier stock levels.",
+              "Do not change stock, availability, or software during the review.",
+              "Stay within this store and product."
+            ],
+            "uncertainties": [
+              "Today's process may not explain the earlier incident.",
+              "More than one stock-handling problem may have contributed."
+            ],
+            "authorization_boundary": "Recommendation only. On-site work and system access need separate approval. No changes are authorized.",
+            "remaining_question": "What allowed recorded stock to remain higher than available stock?",
+            "human_work_reason": "external_expertise",
+            "required_sources": [
+              "inventory_events",
+              "stock_counts",
+              "availability_updates",
+              "pick_events"
+            ],
+            "expertise_or_access_needed": "On-site inventory expertise and read-only access to inventory settings.",
+            "gap_refs": []
+          }
+        ]
+      },
+      "triage_policy": null,
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "case_scoped": true,
+        "deterministic_metrics": true,
+        "citations": true,
+        "human_review_required": true
+      }
+    },
+    {
+      "category": "cancellation",
+      "title": "Post-payment item cancellations",
+      "case_id": "CC-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "item_label": "Curd - 400 g tub",
+      "scope": {
+        "store_ids": [
+          "GGN-C"
+        ],
+        "city": "Gurgaon",
+        "placement_time_start_inclusive": "18:40:00",
+        "placement_time_end_exclusive": "19:40:00",
+        "timezone": "Asia/Kolkata",
+        "supporting_records_start": "2026-10-19T18:35:00+05:30",
+        "population_basis": "Complete authored order population for this small synthetic case; not a representative store cancellation rate.",
+        "placement_date_start": "2026-10-19",
+        "placement_date_end_inclusive": "2026-10-19"
+      },
+      "metrics": {
+        "paid_orders": 10,
+        "paid_order_lines": 40,
+        "affected_orders": 2,
+        "cancelled_order_lines": 2,
+        "cancelled_units": 2,
+        "cancelled_item_value_paise": 9000,
+        "complaint_records": 4,
+        "complained_unique_orders": 2,
+        "follow_up_contacts": 2,
+        "unaffected_orders": 8
+      },
+      "definitions": {
+        "post_payment_cancellation": "A store removes accepted item quantity after successful payment capture and before delivery.",
+        "follow_up": "Another contact about the same order; not another affected order.",
+        "quantity_unit": "One retail pack of the stated pack size; two 500 ml pouches count as two units.",
+        "money": "Integer INR paise; line prices include all charges in this authored example."
+      },
+      "coverage": {
+        "orders": {
+          "path": "orders.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "order_lines": {
+          "path": "order_lines.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 40
+        },
+        "payments": {
+          "path": "payments.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "feedback": {
+          "path": "feedback.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 4
+        },
+        "inventory_events": {
+          "path": "inventory_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 11
+        },
+        "availability_checks": {
+          "path": "availability_checks.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "availability_updates": {
+          "path": "availability_updates.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 11
+        },
+        "pick_events": {
+          "path": "pick_events.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        },
+        "cancellation_events": {
+          "path": "cancellation_events.jsonl",
+          "status": "available",
+          "coverage": "All authored records of this type within this case.",
+          "note": null,
+          "raw_rows": 2
+        },
+        "stock_counts": {
+          "path": "stock_counts.jsonl",
+          "status": "not_collected",
+          "coverage": "Focus product only within this case.",
+          "note": "No records were collected; this is not an observed zero.",
+          "raw_rows": null
+        },
+        "quality_inspections": {
+          "path": "quality_inspections.jsonl",
+          "status": "available",
+          "coverage": "Focus product only within this case.",
+          "note": null,
+          "raw_rows": 10
+        }
+      },
+      "stage_coverage": {},
+      "result": {
+        "issue_summary": "At GGN-C, two paid orders each lost one 400 g curd tub. Picking inspections found a cracked lid and a broken seal. Other groceries arrived. Both tubs were set aside and availability was updated before cancellation. No wider system or supplier fault is established.",
+        "impact": {
+          "rating": "Medium",
+          "rationale": "Two customers did not receive curd after payment. One bought it elsewhere. Both contacted support again. The damaged tubs were stopped before delivery. This small case does not show the wider cancellation rate.",
+          "evidence_refs": [
+            "metric:affected_orders",
+            "metric:follow_up_contacts",
+            "feedback:CC-03-FB-003",
+            "feedback:CC-03-FB-004",
+            "orders:CC-03-ORD-001",
+            "orders:CC-03-ORD-002",
+            "quality_inspections:CC-03-QUALITY-001",
+            "quality_inspections:CC-03-QUALITY-002"
+          ]
+        },
+        "metric_claims": [
+          {
+            "key": "paid_orders",
+            "value": 10
+          },
+          {
+            "key": "paid_order_lines",
+            "value": 40
+          },
+          {
+            "key": "affected_orders",
+            "value": 2
+          },
+          {
+            "key": "cancelled_order_lines",
+            "value": 2
+          },
+          {
+            "key": "cancelled_units",
+            "value": 2
+          },
+          {
+            "key": "cancelled_item_value_paise",
+            "value": 9000
+          },
+          {
+            "key": "complaint_records",
+            "value": 4
+          },
+          {
+            "key": "complained_unique_orders",
+            "value": 2
+          },
+          {
+            "key": "follow_up_contacts",
+            "value": 2
+          },
+          {
+            "key": "unaffected_orders",
+            "value": 8
+          }
+        ],
+        "findings": [
+          {
+            "id": "F1",
+            "kind": "report",
+            "text": "Customers reported curd removal after payment. Other groceries arrived. One bought curd elsewhere. Follow-up messages concern the same two orders.",
+            "evidence_refs": [
+              "feedback:CC-03-FB-001",
+              "feedback:CC-03-FB-002",
+              "feedback:CC-03-FB-003",
+              "feedback:CC-03-FB-004"
+            ]
+          },
+          {
+            "id": "F2",
+            "kind": "observation",
+            "text": "Orders 001 and 002 were paid at 19:04:10 and 19:05:10. Curd was cancelled at 19:11 and 19:12. Other items arrived at 19:29 and 19:30. Two tubs were cancelled, worth 9,000 paise (Rs 90). Refund completion is unknown.",
+            "evidence_refs": [
+              "payments:CC-03-PAY-001",
+              "payments:CC-03-PAY-002",
+              "cancellation_events:CC-03-CANCEL-001",
+              "cancellation_events:CC-03-CANCEL-002",
+              "orders:CC-03-ORD-001",
+              "orders:CC-03-ORD-002",
+              "metric:cancelled_order_lines",
+              "metric:cancelled_units",
+              "metric:cancelled_item_value_paise"
+            ]
+          },
+          {
+            "id": "F3",
+            "kind": "observation",
+            "text": "Inspections found a cracked lid at 19:10:55 and a broken seal at 19:11:55. Each tub was set aside one second later. Checkout availability updated two seconds after that. These steps were completed before cancellation.",
+            "evidence_refs": [
+              "quality_inspections:CC-03-QUALITY-001",
+              "quality_inspections:CC-03-QUALITY-002",
+              "pick_events:CC-03-PICK-001",
+              "pick_events:CC-03-PICK-002",
+              "inventory_events:CC-03-INV-DAMAGE-001",
+              "inventory_events:CC-03-INV-DAMAGE-002",
+              "availability_updates:CC-03-UPD-DAMAGE-001",
+              "availability_updates:CC-03-UPD-DAMAGE-002",
+              "cancellation_events:CC-03-CANCEL-001",
+              "cancellation_events:CC-03-CANCEL-002"
+            ]
+          },
+          {
+            "id": "F4",
+            "kind": "observation",
+            "text": "Both orders were accepted when checkout showed two tubs. This was before the quality failures were recorded. Eight orders were unaffected. Rejected tubs came from batches A and B. Earlier passed tubs came from batch C. A shared batch fault is unconfirmed.",
+            "evidence_refs": [
+              "availability_checks:CC-03-CHECK-001",
+              "availability_checks:CC-03-CHECK-002",
+              "availability_updates:CC-03-UPD-010",
+              "metric:unaffected_orders",
+              "quality_inspections:CC-03-QUALITY-003",
+              "quality_inspections:CC-03-QUALITY-004",
+              "quality_inspections:CC-03-QUALITY-005",
+              "quality_inspections:CC-03-QUALITY-006",
+              "quality_inspections:CC-03-QUALITY-007",
+              "quality_inspections:CC-03-QUALITY-008",
+              "quality_inspections:CC-03-QUALITY-009",
+              "quality_inspections:CC-03-QUALITY-010",
+              "quality_inspections:CC-03-QUALITY-001",
+              "quality_inspections:CC-03-QUALITY-002"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "explanation": "Outdated availability or overselling could explain the cancellations.",
+            "support_refs": [
+              "availability_checks:CC-03-CHECK-001",
+              "availability_checks:CC-03-CHECK-002"
+            ],
+            "counter_refs": [
+              "availability_updates:CC-03-UPD-010",
+              "quality_inspections:CC-03-QUALITY-001",
+              "quality_inspections:CC-03-QUALITY-002",
+              "availability_updates:CC-03-UPD-DAMAGE-001",
+              "availability_updates:CC-03-UPD-DAMAGE-002"
+            ],
+            "gaps": [
+              "The records show quality rejection. They do not establish overselling or the tubs' condition at checkout."
+            ]
+          },
+          {
+            "explanation": "A packaging or handling problem could explain both defects.",
+            "support_refs": [
+              "quality_inspections:CC-03-QUALITY-001",
+              "quality_inspections:CC-03-QUALITY-002"
+            ],
+            "counter_refs": [
+              "quality_inspections:CC-03-QUALITY-003",
+              "quality_inspections:CC-03-QUALITY-010"
+            ],
+            "gaps": [
+              "When and where the damage occurred is unknown. Different batches do not rule out a shared cause. Passed inspections do not prove all other stock was safe."
+            ]
+          }
+        ],
+        "gaps": [
+          "Stock counts were not provided. A later count would not establish earlier stock condition. It is not needed to explain these cancellations.",
+          "The cause of the packaging damage and whether it could be detected before payment are unknown.",
+          "Refund completion is unknown."
+        ],
+        "decision": "withhold_intervention",
+        "withholding_reason": "No further task is justified for this case. Inspections explain both cancellations. The damaged tubs were set aside, and availability was updated promptly. No wider fault is established. The origin of the damage remains unknown.",
+        "recommendations": []
+      },
+      "triage_policy": null,
+      "rubric_sha256": "94fba44ea4fc8626f4a7f196fb63ec383e01ab14afef485a87b36aacc0f606a4",
+      "validation": {
+        "status": "passed",
+        "case_scoped": true,
+        "deterministic_metrics": true,
+        "citations": true,
+        "human_review_required": true
+      }
+    }
+  ],
+  "sources": [
+    {
+      "case_id": "GG-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "5a795100d9e4825832906e88e94ceb3d8d33339d2c8ac9bc445969d5445ce7ae"
+    },
+    {
+      "case_id": "GG-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "dbb296bbcb645837676742f295e864f25be95b79aadd44de0af56fed492f40e3"
+    },
+    {
+      "case_id": "GG-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "b14e410fcb0dac4a08bd5dc32e6c63b9ce909773dd815f39c9323d5607ca4578"
+    },
+    {
+      "case_id": "GG-04",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "270c28fe46ccdca8d63f5ac3056769a9ad3a146473ef90a08fe9593e63f3c88f"
+    },
+    {
+      "case_id": "CC-01",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "8c003303b52dcfaca8b9928fc0d5032614f21b246cb8c41e1355006fa4720499"
+    },
+    {
+      "case_id": "CC-02",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "dccca448dbb6ae43108e8a50f51e6c3d97170b2c4771ea41755a4829c831a2b1"
+    },
+    {
+      "case_id": "CC-03",
+      "run_id": "7424a748b72345988c82e4511bd5ea71",
+      "model": "gpt-6-astra",
+      "source_batch_status": "complete",
+      "artifact_sha256": "0a1b2a26720144f30aff1d2a6d3035655ffcd2d91ff4b98ce05d6cbf0ab91365"
+    }
+  ],
+  "trace_runs": [
+    "7424a748b72345988c82e4511bd5ea71"
+  ]
+}

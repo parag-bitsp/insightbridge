@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+tests/scratch-*/
+.env
+.openai-api-key
+feedback-data/

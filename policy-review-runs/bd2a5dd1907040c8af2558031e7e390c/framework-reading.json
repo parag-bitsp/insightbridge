@@ -1,0 +1,14 @@
+{
+  "threshold_percent": 15,
+  "writing_rules": [
+    "Use short sentences and familiar industry terms, aiming for about 20 words or fewer per sentence.",
+    "Keep summaries concise: issue summary to three short sentences and each action to two.",
+    "Recommend the smallest useful next step and combine overlapping tasks.",
+    "Use confirmed findings only; separate facts from possible causes and state uncertainty.",
+    "Avoid jargon, repetition, invented causes, unsupported benefits, redundant tasks, and repeated completed work.",
+    "Request records only when they are necessary for the next decision and explain why they matter."
+  ],
+  "ownership_rule": "Each proposed task must have one accountable owner, with other teams named only as support when needed. Assign work based on the observed problem.",
+  "approval_boundary": "Recommendations do not authorize operational changes. A product owner reviews findings and may proceed, defer, or reject; approval only prepares the defined handoff.",
+  "reviewer_guidance": "Reviewers should check evidence grounding, counts, timestamps, deduplication, separation of facts from possible causes, and material gaps. Accept flexible wording and defensible alternative actions, while treating example outputs as illustrations only. Critical failures include fabricated evidence, materially wrong figures, cross-case leakage, and unauthorized actions."
+}

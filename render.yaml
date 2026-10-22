@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: insightbridge
+    runtime: python
+    plan: starter
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m delayed_orders.ui --host 0.0.0.0
+    healthCheckPath: /
+    disk:
+      name: insightbridge-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.7
+      - key: INSIGHTBRIDGE_DATA_DIR
+        value: /var/data/insightbridge

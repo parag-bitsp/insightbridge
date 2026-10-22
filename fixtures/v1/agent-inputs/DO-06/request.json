@@ -1,0 +1,23 @@
+{
+  "is_synthetic": true,
+  "task": "Investigate customer delivery-delay concerns using permitted records. Report supported findings, uncertainty and justified next actions; do not perform external writes.",
+  "scope": {
+    "store_ids": [
+      "BLR-A",
+      "BLR-B"
+    ],
+    "placement_date_start": "2026-10-12",
+    "placement_date_end_inclusive": "2026-10-18",
+    "placement_time_start_inclusive": "19:00:00",
+    "placement_time_end_exclusive": "21:00:00",
+    "timezone": "Asia/Kolkata"
+  },
+  "definitions": {
+    "late": "Delivered after original checkout promised latest arrival; later ETA updates do not replace the original.",
+    "long_packing_minutes_exclusive": 12,
+    "long_post_packing_assignment_wait_minutes_exclusive": 10,
+    "long_pickup_to_delivery_minutes_exclusive": 15,
+    "availability_max_snapshot_age_minutes": 5
+  },
+  "authority": "Read-only investigation and recommendation preparation. The product owner decides on external work."
+}

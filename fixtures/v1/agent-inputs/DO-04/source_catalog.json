@@ -1,0 +1,66 @@
+{
+  "is_synthetic": true,
+  "access": "read_only",
+  "sources": {
+    "orders": {
+      "path": "orders.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "order_events": {
+      "path": "order_events.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "promise_history": {
+      "path": "promise_history.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "feedback": {
+      "path": "feedback.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "assignment_attempts": {
+      "path": "assignment_attempts.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "rider_availability": {
+      "path": "rider_availability.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "label_prints": {
+      "path": "label_prints.jsonl",
+      "status": "not_collected",
+      "lookup_response": null
+    },
+    "packing_queues": {
+      "path": "packing_queues.jsonl",
+      "status": "not_collected",
+      "lookup_response": null
+    },
+    "staffing_rosters": {
+      "path": "staffing_rosters.jsonl",
+      "status": "not_collected",
+      "lookup_response": null
+    },
+    "travel_conditions": {
+      "path": "travel_conditions.jsonl",
+      "status": "available",
+      "lookup_response": null
+    },
+    "safety_reports": {
+      "path": "safety_reports.jsonl",
+      "status": "not_collected",
+      "lookup_response": null
+    },
+    "supervisor_messages": {
+      "path": "supervisor_messages.jsonl",
+      "status": "not_collected",
+      "lookup_response": null
+    }
+  }
+}

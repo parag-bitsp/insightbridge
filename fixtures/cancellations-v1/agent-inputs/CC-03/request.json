@@ -1,0 +1,26 @@
+{
+  "case_id": "CC-03",
+  "task": "Review reports of items removed after successful payment. Establish what happened, quantify the affected items and orders within these records, and identify supported next actions and remaining uncertainty. Use only this case; do not perform external writes.",
+  "customer_problem": "Customers report that curd (400 g tub) was removed from paid grocery orders while the other items were delivered.",
+  "scope": {
+    "store_ids": [
+      "GGN-C"
+    ],
+    "city": "Gurgaon",
+    "placement_date": "2026-10-19",
+    "placement_time_start_inclusive": "18:40:00",
+    "placement_time_end_exclusive": "19:40:00",
+    "timezone": "Asia/Kolkata",
+    "supporting_records_start": "2026-10-19T18:35:00+05:30",
+    "population_basis": "Complete authored order population for this small synthetic case; not a representative store cancellation rate."
+  },
+  "focus_product_id": "CURD-400",
+  "definitions": {
+    "post_payment_cancellation": "A store removes accepted item quantity after successful payment capture and before delivery.",
+    "follow_up": "Another contact about the same order; not another affected order.",
+    "quantity_unit": "One retail pack of the stated pack size; two 500 ml pouches count as two units.",
+    "money": "Integer INR paise; line prices include all charges in this authored example."
+  },
+  "authority": "Read-only evidence review and recommendation preparation only.",
+  "provenance": "Authored synthetic development demonstration, not production or held-out evidence."
+}
